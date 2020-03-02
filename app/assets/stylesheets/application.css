@@ -10,6 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+ 
+ 
+ /* body関連の編集は、こっちで！！、こっちに関しては、asset.rbで何か編集する必要なさそう*/
+ 
+ body {
+     margin: 0;
+     padding: 0;
+     background-color: gray;
+ }

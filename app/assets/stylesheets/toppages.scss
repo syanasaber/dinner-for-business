@@ -1,0 +1,103 @@
+header {
+    width: 1260px;
+    height: 1480px;
+    margin: 0 auto;
+}
+
+
+/* デフォルトマージンの削除 */
+p,h1,h2,h3,h4,h5,h6 {
+    margin-top: 0;
+}
+
+
+nav ul li a {
+    text-decoration: none;
+    line-height: 2;
+}
+
+a {
+    color: black;
+}
+
+a:visited {
+    color: blue;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ロゴ下部のマージン削除 */
+img {
+    vertical-align: bottom;
+}
+
+.logo {
+    float: left;
+    margin-top: 50px;
+}
+
+.global-nav {
+    float: right;
+    margin-top: 60px;
+}
+
+.global-nav li {
+    float: left;
+    margin: 0 20px;
+    list-style: none;
+}
+
+.global-nav li a:hover {
+    border-bottom: 2px solid blue;
+    padding-bottom: 3px;
+    text-decoration: none;
+}
+
+#wrapper {
+    clear: both;
+}
+
+.content {
+    width: 960px;
+    
+    margin: 0 auto;
+    text-align: center;
+}
+
+footer {
+    width: 960px;
+    margin: 500px auto 0 auto;
+    text-align: left;
+    padding: 20px 0;
+}
+
+h1 {
+    font-size: 100px;
+    line-height: 2;
+    color: black;
+    font-family: "Hiragino Sans";
+    margin-bottom: 15px;
+}
+
+.content {
+    margin-top: 50px;
+}
+
+header {
+    
+background-image: url(main-visual.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    
+}
+/*ファイルパスの記載は必要なかった*/
