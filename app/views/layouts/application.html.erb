@@ -24,10 +24,19 @@
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
   
   </head>
+  
+  
+  
+  <!-- if current_page?でトップページとそれ以外で、<bodyタグを分岐させる -->
+  <!-- んで、トップページのbodyタグにclass付与して、それだけフルスクリーン表示させる -->
+  
 
   <body>
+    <!-- navbar使う場合は、ここにパーシャル-->
     
     <div class="container">
+      
+      <%= render 'layouts/flash_message' %>
       <%= yield %>
     </div>
   </body>

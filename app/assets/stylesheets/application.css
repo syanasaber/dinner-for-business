@@ -10,7 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_self
+ *= require_selfｓ
  */
  
  
@@ -20,4 +20,9 @@
      margin: 0;
      padding: 0;
      background-color: gray;
+     background-image: url(main-visual.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
  }

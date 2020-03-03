@@ -1,0 +1,86 @@
+<!-- ログインもしくは、会員登録完了後はここにリダイレクトさせる -->
+<!-- ワイヤーフレーム7を参考に作成する。 -->
+
+<!-- 基本構造の参照は、micropostsのshowぺーじにて -->
+
+
+
+
+
+<div class="row">
+    <aside class="col-sm-4">
+        
+        <!-- プロフィール表示ゾーン -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <%= @user.name %>
+                </h3>
+            </div>
+            <div class="card-body">
+                <img class="rounded img-fluid" src="
+                <%= gravatar_url(@user, { size: 500 }) %>" alt="">
+            </div>
+        </div>
+        
+        
+        
+        <!-- 検索フォームと検索ボタンを設置するゾーン -->
+        <!-- ★隙間は、style="margin-top"で修正する-->
+        
+        <div class="card" style="margin-top: 50px;">
+            <div class="card-header">
+                <h3 class="card-title">
+                    
+                    <div class="row">
+                        <label class="col-sm-2">エリア：</label>
+                            <div class="col-sm-10 mb-4">
+                                <input type="text" class="form-control" name="area">
+                            </div>
+                        
+                        <label class="col-sm-2">ジャンル・店名：</label>
+                            <div class="col-sm-10 mb-4">
+                                <input type="text" class="form-control" name="shop_name">
+                            </div>    
+                    </div>
+                    
+                </h3>
+            </div>
+            <div class="card-body">
+                
+            　　<a href="#" class="btn btn-success">検索する</a>
+            
+            </div>
+        </div>
+        
+  
+    
+       <!-- 記事投稿ボタンを設置するゾーン -->
+        <div class="card"　style="margin-top: 50px;">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <p>あなたのおすすめの記事をシェアしよう！</p>
+                </h3>
+            </div>
+            <div class="card-body">
+                
+                <a href="#" class="btn btn-success">記事を投稿する</a>
+                
+            </div>
+        </div>
+ 
+        
+    </aside>
+    
+    <!-- タブ表示するコード-->
+    <div class="col-sm-8">
+        <ul class="nav nav-tabs nav-justified mb-3">
+            <li class="nav-item"><a href="#" class="nav-link">TOP<span class="badge badge-secondary"></span></a></li>
+            <li class="nav-item"><a href="#" class="nav-link">新着<span class="badge badge-secondary"></span></a></li>
+            <li class="nav-item"><a href="#" class="nav-link">フォロー<span class="badge badge-secondary"></span></a></li>
+            <li class="nav-item"><a href="#" class="nav-link">フォロワー<span class="badge badge-secondary"></span></a></li>
+            <li class="nav-item"><a href="#" class="nav-link">お気に入り記事<span class="badge badge-secondary"></span></a></li>
+        </ul>
+    
+    </div>
+</div>    
