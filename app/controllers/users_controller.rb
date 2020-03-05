@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  #事前処理でアクション実行者が、ログインユーザーかおづかを判断。
+  
+  before_action :require_user_logged_in, only: [:index, :show, :edit, :update, :destroy]
+  
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
   end
@@ -36,8 +40,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation,
-                                    :job_field, :job_class, :my_area1, :my_area2, :my_area3)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :job_field, :job_class, :my_area1, :my_area2, :my_area3)
   end
   
   

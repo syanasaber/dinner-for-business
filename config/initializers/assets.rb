@@ -15,3 +15,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 #()内の引数に、適用したいcss、scssのファイル名入れないとエラーが出る
 Rails.application.config.assets.precompile += %w( toppages.scss )
+
+Rails.application.config.assets.precompile += %w( users.scss )

@@ -1,0 +1,40 @@
+
+
+<header class="mb-4">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">DinnerPlanner</a>  <!-- 後ほどロゴを挿入-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        
+        <% if logged_in? %>
+          
+          <!--  ★★ここは後ほどリンク付け設定を行う -->
+          <li class="nav-item">お店の検索</li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-item">プロフィール設定</li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item">お気に入り一覧</li>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+            </ul>
+          </li>
+        
+        
+        <% else %>
+        
+          <li class="nav-item"><a href="#">お店の検索</a></li>  　
+          <li class="nav-item"><%= link_to 'Signup', signup_path, class: 'nav-link' %></li>
+        
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
+    
+    <!-- 後ほど検索ページへ飛べるようリンク設定する。 -->

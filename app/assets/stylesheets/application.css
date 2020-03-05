@@ -20,9 +20,19 @@
      margin: 0;
      padding: 0;
      background-color: gray;
-     background-image: url(main-visual.jpg);
+     
+ }
+ 
+ 
+ .top {
+  
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+    background-image: url(main-visual.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
+  
  }

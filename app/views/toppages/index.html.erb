@@ -2,6 +2,9 @@
 
 <!-- 後ほどログイン有無でページ分岐　if logged in?を追加する。 -->
 <!-- ログイン後のトップページデザインをどうするかは別途考える -->
+<!-- ★ログインユーザーのみが使える何か他の便利機能を追加して、それぞれのページ遷移のボタン設置を構築 -->
+
+
 
 <!-- ログイン完了後のリダイレクトは、sessionsコントローラーでshowページにするよう設定。 -->
 <!-- showページのデザインはワイヤーフレーム７のページを作る -->
@@ -12,6 +15,7 @@
                 <!-- 後ほどロゴ作成して挿入する-->
                 
                 
+                
 <div class="row">
     <div class="header">
         <div class="logo">
@@ -19,9 +23,9 @@
         </div>
         <nav>
             <ul class="global-nav">
-                <li><a href="#">Dinner Plannerの使い方</a></li>
-                <li><a href="#">新規会員登録</a></li>
-                <li><a href="#">ログイン</a></li>
+                <li><%= link_to 'おすすめ活用法', navigation_path, class: 'btn btn-lg btn-primary' %></li>
+                <li><%= link_to '新規会員登録', signup_path, class: 'btn btn-lg btn-primary' %></li>
+                <li><%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %></li>
             </ul>
         </nav>
     </div>

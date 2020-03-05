@@ -55,14 +55,40 @@
       
       
       
-      <div class="form-group">
-        <%= f.label :よく使うエリア, 'よく使うエリア' %>
+      <ul>
+        <li>
+          
+          <div class="form-group">
+            <%= f.label :よく使うエリア1, 'よく使うエリア1' %>
+            
+            <!--  ★最終的には、ドロップダウン選択のフォームを３つ作って、配置。住所.jp参照-->
+            
+            <%= f.text_field :my_area1 %>
+          </div>
+        </li>
         
-        <!--  ★最終的には、ドロップダウン選択のフォームを３つ作って、配置。住所.jp参照-->
-        <%= f.text_field :my_area %>
-      </div>
-      
-      
+        <li>  
+          <div class="form-group">
+            <%= f.label :よく使うエリア2, 'よく使うエリア2' %>
+            
+            <!--  ★最終的には、ドロップダウン選択のフォームを３つ作って、配置。住所.jp参照-->
+            
+            <%= f.text_field :my_area2 %>
+          </div>
+        </li>
+        
+        <li>  
+          <div class="form-group">
+            <%= f.label :よく使うエリア3, 'よく使うエリア3' %>
+            
+            <!--  ★最終的には、ドロップダウン選択のフォームを３つ作って、配置。住所.jp参照-->
+            
+            <%= f.text_field :my_area3 %>
+          </div>
+        </li>
+          
+      </ul>
+          
         
       <%= f.submit '会員登録', class: 'btn btn-primary btn-block' %>
     <% end %>
