@@ -48,7 +48,7 @@
             </div>
             <div class="card-body">
                 
-            　　<a href="#" class="btn btn-success">検索する</a>
+              <a href="#" class="btn btn-success">検索する</a>
             
             </div>
         </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="card-body">
                 
-                <a href="#" class="btn btn-success">記事を投稿する</a>
+                <%= link_to '記事を投稿する', new_article_path, class: 'btn btn-lg btn-primary' %>
                 
             </div>
         </div>
@@ -82,5 +82,11 @@
             <li class="nav-item"><a href="#" class="nav-link">お気に入り記事<span class="badge badge-secondary"></span></a></li>
         </ul>
     
+        <%= render 'articles/articles', articles: @articles %>
+        
+    
+    
     </div>
+    
+    
 </div>    

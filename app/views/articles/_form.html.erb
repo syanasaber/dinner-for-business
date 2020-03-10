@@ -1,0 +1,238 @@
+
+
+    <%= form_with(model: article, local: true) do |f| %>
+        <% if article.errors.any? %>
+            <div id="error_explation class="alert alert-warning">
+                <ul class="mb-0">
+                    <% article.errors.full_messages.each do |art| %>
+                        <li><%= art %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+        
+        <form>
+            <div class="form-group row">
+                
+                    <%= f.label :店名, '店名', class: 'col-sm-2' %>
+                
+                    <%= f.text_field :shop_name, class: 'col-sm-8' %>
+                  
+            </div>
+            
+            
+            <div class="form-group row">
+                
+                    <%= f.label :住所, '住所', class: 'col-sm-2' %>
+                
+                    <%= f.text_field :address, class: 'col-sm-8' %>
+            </div>
+            
+            <div class="form-group row">
+                
+                    <%= f.label :URL, 'URL', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.text_field :url, class: 'col-sm-8' %>
+                  
+            </div>
+            
+            
+            <div class="form-group row">
+                
+                    <%= f.label :写真1, '写真1', class: 'col-sm-2' %>
+                
+                    <%= f.file_field :image1, class: 'col-sm-3' %>
+               
+            
+                    <%= f.label :写真2, '写真2', class: 'col-sm-2' %>
+               
+                    <%= f.file_field :image2, class: 'col-sm-3' %>
+            </div>
+            
+            
+            <div class="form-group row">
+                
+                    <%= f.label :写真3, '写真3', class: 'col-sm-2' %>
+                
+                    <%= f.file_field :image3, class: 'col-sm-3' %>
+               
+                
+                    <%= f.label :写真4, '写真4', class: 'col-sm-2' %>
+                
+                    <%= f.file_field :image4, class: 'col-sm-3' %>
+            
+            </div>   
+            
+            <div class="form-group row">
+                
+                    <%= f.label :写真5, '写真5', class: 'col-sm-2' %>
+               
+                    <%= f.file_field :image5, class: 'col-sm-3' %>
+            
+                    <%= f.label :写真6, '写真6', class: 'col-sm-2' %>
+                
+                    <%= f.file_field :image6, class: 'col-sm-3' %>
+               
+            </div>
+                
+            <div class="form-group row">
+                
+                    <%= f.label :エリア, 'エリア', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.text_field :area, class: 'col-sm-8' %>
+               
+                
+            </div>
+            
+            
+            
+        
+            <div class="form-group row">
+                
+                    <%= f.label :最寄駅, '最寄駅', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.text_field :station, class: 'col-sm-4' %>
+               
+                
+               
+                    <%= f.label :駅からの距離, '駅からの距離', class: 'offset-sm-1 col-sm-2' %>
+               
+                
+                
+                    <%= f.text_field :walk_time, class: 'col-sm-2' %>
+                
+            </div>
+            
+            <div class="form-group row">
+                
+                    <%= f.label :メイン, 'メイン', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.select :main, [['お酒', 'お酒'], ['食', '食']], class: 'col-sm-4' %>
+                  
+            </div>
+            
+            <div class="form-group row">
+                
+                    <%= f.label :こだわり（お酒）, 'こだわり（お酒）', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.select :alcohol_type, [['ビール', 'ビール'], ['カクテル', 'カクテル'], ['ワイン', 'ワイン'], ['日本酒', '日本酒'], ['焼酎', '焼酎'],
+                    ['ウイスキー', 'ウイスキー'], ['その他', 'その他']], class: 'col-sm-4' %>
+                  
+            </div>
+            
+             <div class="form-group row">
+                
+                    <%= f.label :こだわり（食）, 'こだわり（食）', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.select :food_type, [['お肉', 'お肉'], ['魚系', '魚系'], ['和食', '和食'], ['イタリアン', 'イタリアン'], 
+                    ['フレンチ', 'フレンチ'], ['その他', 'その他']], class: 'col-sm-4' %>
+                  
+            </div>
+            
+            
+            <div class="form-group row">
+                
+                    <%= f.label :予算, '予算（一人あたり）', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.select :budget, [['5,000', '5,000'], ['5,000~7,000', '5,000~7,000'], ['7,000~9,000', '7,000~9,000'], 
+                    ['9,000~12,000', '9,000~12,000'], ['12,000~15,0000', '12,000~15,000'], ['15,000~20,000', '15,000~20,000']], class: 'col-sm-4' %><p>円未満</p>
+                  
+            </div>
+            
+            <div class="form-group row">
+                
+                    <%= f.label :雰囲気, '雰囲気', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.select :situation, [['社長・経営者クラス', '社長・経営者クラス'], ['役員クラス', '役員クラス'], ['部長クラス', '部長クラス'],
+                                             ['役職クラス', '役職クラス'], ['担当レベル', '担当レベル']], class: 'col-sm-4' %>
+                  
+            </div>
+            
+            <div class="form-group row">
+                
+                    <%= f.label :ソフトドリンク, 'ソフトドリンク', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.select :softdrink, [['有', '有'], ['無', '無']], class: 'col-sm-4' %>
+                  
+            </div>
+            
+            <div class="form-group row">
+                
+                    <%= f.label :個室, '個室', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.select :room_type, [['有(完全個室)', '有(完全個室)'], ['有(簡易区切りのみ)', '有(簡易区切りのみ)'],
+                                                ['無', '無']], class: 'col-sm-4' %>
+                  
+            </div>
+            
+            <div class="form-group row">
+                
+                    <%= f.label :タバコ, 'タバコ', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.select :smoking, [['喫煙', '喫煙'], ['禁煙', '禁煙']], class: 'col-sm-4' %>
+                  
+            </div>
+            
+            <div class="form-group row">
+                
+                    <%= f.label :ネット予約, 'ネット予約', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.select :net_reservation, [['可', '可'], ['不可', '不可']], class: 'col-sm-4' %>
+                  
+            </div>
+            
+            <div class="form-group row">
+                    <!-- 直接数値を入力 -->
+                    <%= f.label :食べログ、ぐるなび等評価, '食べログ、ぐるなび等評価', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.text_field :食べログ、ぐるなび等評価, class: 'col-sm-4' %>
+                  
+            </div>
+            
+            <div class="form-group row">
+                
+                    <!-- 別テーブル、データベースを設けるよう検討中-->
+                
+                    <%= f.label :コメント等, 'コメント等', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.text_field :コメント等, class: 'col-sm-10' %>
+                  
+            </div>
+            
+            
+            <%= f.submit '記事を投稿する', class: 'btn btn-primary btn-block' %>
+            
+        </form>
+        
+                
+            
+           
+    <% end %>

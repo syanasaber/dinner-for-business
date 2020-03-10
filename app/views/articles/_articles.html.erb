@@ -1,0 +1,39 @@
+
+
+<ul class="list-unstyled">
+  <% articles.each do |article| %>
+    <li class="media mb-3">
+      <img class="mr-2 rounded" src="<%= gravatar_url(article.user, { size: 50 }) %>" alt="">
+      <div class="media-body">
+        <div>
+          <%= link_to article.user.name, user_path(article.user) %> <span class="text-muted">posted at <%= article.created_at %></span>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-4">
+            <p>店名:<%= article.shop_name %></p>
+          </div>
+          
+          <div class="offset-sm-1 col-sm-3">
+            <p>エリア:<%= article.area %></p>
+          </div>
+          
+          <div class="col-sm-3">
+            <p>最寄駅:<%= article.station %></p>
+          </div>
+        </div>
+        
+        
+        <div>
+          <% if current_user == article.user %>
+            <%= link_to "Delete", article, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+        
+      </div>
+    </li>
+  <% end %>
+  <%= paginate articles %>
+</ul>
+
+<!-- 後ほど削除じゃなくて、showボタンに変更させる-->
