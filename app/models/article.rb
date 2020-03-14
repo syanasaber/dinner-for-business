@@ -2,8 +2,9 @@ class Article < ApplicationRecord
     belongs_to :user
     
     validates :shop_name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
-    validates :url, uniqueness: { case_sensitive: false }
-    validates :address, uniqueness: { case_sensitive: false }
+    validates :shop_url, uniqueness: { case_sensitive: false }, if: :form_blank?
+    validates :address, uniqueness: { case_sensitive: false }, if: :form_blank?
+  
     
     mount_uploader :image1, ImageUploader
     mount_uploader :image2, ImageUploader
@@ -12,4 +13,9 @@ class Article < ApplicationRecord
     mount_uploader :image5, ImageUploader
     mount_uploader :image6, ImageUploader
     
+    
+    private
+        def form_blank?
+            presence == true
+        end
 end

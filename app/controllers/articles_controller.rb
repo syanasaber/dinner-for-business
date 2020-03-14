@@ -2,6 +2,11 @@ class ArticlesController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
   
+  def show
+    @articles = Article.all
+    @article = @articles.find(params[:id])
+  end
+  
   def new
     @article = Article.new
   end
@@ -13,6 +18,7 @@ class ArticlesController < ApplicationController
       redirect_to user_path(current_user)
     else
       flash.now[:danger] = '記事が投稿できませんでした。'
+      render :new
     end
   end
 
@@ -25,7 +31,7 @@ class ArticlesController < ApplicationController
   private
   
   def article_params
-    params.require(:article).permit(:shop_name, :url, :address, :image1, :image2, :image3, :image4, :image5, :image6, :area, :station, :walk_time,
+    params.require(:article).permit(:shop_name, :shop_url, :address, :image1, :image2, :image3, :image4, :image5, :image6, :area, :station, :walk_time,
         :main, :alcohol_type, :food_type, :budget, :situation, :softdrink, :room_type, :smoking, :net_reservation, :review, :comment)
   end
   

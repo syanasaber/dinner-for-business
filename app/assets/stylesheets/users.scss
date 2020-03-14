@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 ul {
+    color: black;
     text-align: center;
 }
 
@@ -12,4 +13,17 @@ ul li {
     text-decoration: none;
     list-style: none;
     
+}
+
+.user-name {
+    text-align: left;
+}
+
+
+.card {
+    color: black;
+}
+
+.card-body {
+    background-color: #98fb98;
 }
