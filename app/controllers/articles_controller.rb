@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
   
   def article_params
     params.require(:article).permit(:shop_name, :shop_url, :address, :image1, :image2, :image3, :image4, :image5, :image6, :area, :station, :walk_time,
-        :main, :alcohol_type, :food_type, :budget, :situation, :softdrink, :room_type, :smoking, :net_reservation, :review, :comment)
+        :main, :alcohol_type, :food_type, :budget, :situation, :softdrink, :room_type, :smoking, :net_reservation, :review)
   end
   
   def correct_user

@@ -13,10 +13,13 @@
         <% if logged_in? %>
           
           <!--  ★★ここは後ほどリンク付け設定を行う -->
-          <li class="nav-item">お店の検索</li>
+          <li>お店の検索</li>
+          
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-item"><%= link_to 'マイページTOP', user_path(current_user) %></li>
+              <li class="dropdown-divider"></li>
               <li class="dropdown-item">プロフィール設定</li>
               <li class="dropdown-divider"></li>
               <li class="dropdown-item">お気に入り一覧</li>

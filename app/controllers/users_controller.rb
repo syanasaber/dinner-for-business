@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @articles = @user.articles.order(id: :desc).page(params[:page])
+    @articles = @user.feed_articles.order(id: :desc).page(params[:page])
   end
 
   def new
@@ -37,6 +37,20 @@ class UsersController < ApplicationController
 
   def destroy
   end
+  
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings.page(params[:page])
+    counts(@user)
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.page(params[:page])
+    counts(@user)
+  end
+  
+  
   
   private
   
