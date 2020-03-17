@@ -1,0 +1,108 @@
+<!-- ログインもしくは、会員登録完了後はここにリダイレクトさせる -->
+<!-- ワイヤーフレーム7を参考に作成する。 -->
+
+<!-- 基本構造の参照は、micropostsのshowぺーじにて -->
+
+
+
+
+
+<div class="row">
+    <aside class="col-sm-4">
+        
+        <!-- プロフィール表示ゾーン -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <%= @user.name %>
+                </h3>
+            </div>
+            <div class="card-body">
+                <img class="rounded img-fluid" src="
+                <%= gravatar_url(@user, { size: 500 }) %>" alt="">
+            </div>
+                 <%= render 'relationships/follow_button', user: @user %>
+        </div>
+        
+        
+        
+        <!-- 検索フォームと検索ボタンを設置するゾーン -->
+        <!-- ★隙間は、style="margin-top"で修正する-->
+        
+        <div class="card border-dark" style="margin-top: 50px;">
+            <div class="card-header">
+                <h4 class="card-title">
+                    
+                    <div class="row">
+                        <div class="col-sm-10">■エリア</div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-10 mb-6">
+                            <input type="text" class="form-control" name="area">
+                        </div>
+                    </div>
+                    
+                     <div class="row">
+                        <div class="col-sm-10">■店名・ジャンル</div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-10 mb-1">
+                            <input type="text" class="form-control" name="shop_name">
+                        </div>
+                    </div>
+                    
+                </h4>
+            </div>
+            <div class="card-body border-dark">
+                
+              <a href="#" class="btn btn-success">検索する</a>
+            
+            </div>
+        </div>
+        
+  
+    
+       <!-- 記事投稿ボタンを設置するゾーン -->
+        <div class="card"　style="margin-top: 50px;">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <p>あなたのおすすめの記事をシェアしよう！</p>
+                </h3>
+            </div>
+            <div class="card-body">
+                
+                <%= link_to '記事を投稿する', new_article_path, class: 'btn btn-lg btn-primary' %>
+                
+            </div>
+        </div>
+ 
+        
+    </aside>
+    
+    <!-- タブ表示するコード-->
+    <div class="col-sm-8">
+        <ul class="nav nav-tabs nav-justified mb-3">
+            <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">
+                TOP<span class="badge badge-secondary"><%= @count_articles %></span></a></li>
+            
+            <li class="nav-item"><a href="#" class="nav-link">新着<span class="badge badge-secondary"></span></a></li>
+            
+            <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">
+                フォロー<span class="badge badge-secondary"><%= @count_followings %></span></a></li>
+            
+            <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">
+                フォロワー<span class="badge badge-secondary"><%= @count_followers %></span></a></li>
+            
+            <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入り記事<span class="badge badge-secondary"></span></a></li>
+        </ul>
+    
+        <%= render 'articles/articles', articles: @favorites %>
+        
+    
+    
+    </div>
+    
+    
+</div>    

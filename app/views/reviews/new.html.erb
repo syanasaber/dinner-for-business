@@ -1,0 +1,17 @@
+<h2>口コミの投稿</h2>
+
+<%= form_with(model: @review, local: true) do |f| %>
+    <% if @review.errors.any? %>
+        <div id="error_explation class="alert alert-warning">
+            <ul class="mb-0">
+                <% @review.errors.full_messages.each do |rev| %>
+                    <li><%= rev %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+        
+  <%= hidden_field_tag :@article_id, @review.id %>
+  <%= f.text_field :content, class: "text-field" %>
+  <%= f.submit '投稿', class: "submit-btn" %>
+<% end %>

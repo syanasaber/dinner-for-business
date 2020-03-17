@@ -1,6 +1,15 @@
 
+ <div class="col-sm-8">
+        <ul class="nav nav-tabs nav-justified mb-3">
+            <li class="nav-item"><a href="<%= article_path %>" class="nav-link <%= 'active' if current_page?(article_path) %>">
+                概要</a></li>
+            
+            <li class="nav-item"><a href="<%= review_path %>" class="nav-link">口コミ<span class="badge badge-secondary"></span></a></li>
+        </ul>
+</div>
 
 <%= render 'articles/detail', article: @article %>
+
 
 
         

@@ -1,0 +1,27 @@
+
+<div class="col-sm-8">
+        <ul class="nav nav-tabs nav-justified mb-3">
+            <li class="nav-item"><a href="<%= article_path(@article) %>" class="nav-link <%= 'active' if current_page?(article_path(@article)) %>">
+                概要</a></li>
+            
+            <li class="nav-item"><a href="<%= review_path %>" class="nav-link">口コミ<span class="badge badge-secondary"></span></a></li>
+        </ul>
+</div>
+
+<ul class="list-unstyled">
+    <li class="media mb-3">
+    <div class="row">
+        <div class="col-sm-9">
+            <% @reviews.each do |r| %>
+                
+                  <%= r.content %>
+               
+            <% end %>
+        </div>
+    
+        <div class="col-sm-3">
+            <%= link_to "口コミを削除する", @review, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+        </div>
+    </div>
+    </li>
+</ul>

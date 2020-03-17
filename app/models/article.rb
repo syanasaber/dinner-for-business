@@ -1,5 +1,10 @@
 class Article < ApplicationRecord
     belongs_to :user
+    has_many :reviews
+    
+    has_many :likes, dependent: :destroy
+    has_many :favorite_users, through: :likes, source: :user
+    
     
     validates :shop_name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
     validates :shop_url, uniqueness: { case_sensitive: false }, if: :form_blank?

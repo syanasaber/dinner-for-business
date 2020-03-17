@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   def show
     @articles = Article.all
     @article = @articles.find(params[:id])
+    @review = Review.new
   end
   
   def new
@@ -27,6 +28,7 @@ class ArticlesController < ApplicationController
     flash[:success] = '記事を削除しました。'
     redirect_back(fallback_location: user_path)
   end
+  
   
   private
   
