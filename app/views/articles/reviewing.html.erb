@@ -4,16 +4,7 @@
             <h2>口コミの投稿</h2>
             
             <%= form_with(model: @review, local: true) do |f| %>
-                <% if @review.errors.any? %>
-                    <div id="error_explation class="alert alert-warning">
-                        <ul class="mb-0">
-                            <% @review.errors.full_messages.each do |rev| %>
-                                <li><%= rev %></li>
-                            <% end %>
-                        </ul>
-                    </div>
-                <% end %>
-                    
+            
               <%= hidden_field_tag :article_id, @article.id %>
               <%= f.text_field :content, class: "text-field" %>
               <%= f.submit '投稿', class: "submit-btn" %>
@@ -21,7 +12,7 @@
         </aside>
 
 
-        <div class="col-sm-8">
+         <div class="col-sm-8">
                 <ul class="nav nav-tabs nav-justified mb-3">
                     <li class="nav-item"><a href="<%= article_path %>" class="nav-link <%= 'active' if current_page?(article_path) %>">
                         概要</a></li>
@@ -29,14 +20,12 @@
                     <li class="nav-item"><a href="<%= reviewing_article_path %>" class="nav-link <%= 'active' if current_page?(reviewing_article_path) %>">口コミ<span class="badge badge-secondary"></span></a></li>
                 </ul>
             
-                <%= render 'articles/detail', article: @article %>    
-                
+            <%= render 'articles/article_review', reviews: @reviews %>
+        
         </div>
-
 </div>
 
 
 
 
 
-        

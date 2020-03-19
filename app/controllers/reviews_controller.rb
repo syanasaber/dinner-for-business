@@ -4,7 +4,6 @@ class ReviewsController < ApplicationController
     
     
     def show
-        @reviews = @article.reviews
     end
     
     def new
@@ -15,7 +14,7 @@ class ReviewsController < ApplicationController
         @review = @article.reviews.build(review_params)
         if @review.save
           flash[:success] = '口コミを投稿しました。'
-          redirect_to review_path(@review)
+          redirect_to reviewing_article_path(@article)
         else
           flash.now[:danger] = '口コミが投稿できませんでした。'
           render :new
@@ -32,12 +31,12 @@ class ReviewsController < ApplicationController
     
     private
     def review_params
-      params.require(:review).permit(:article_id, :content)
+      params.require(:review).permit(:id, :content)
     end
     
     def set_article
         @articles = Article.all
-        @article = @articles.find_by(params[:id])
+        @article = @articles.find(params[:article_id])
     end
     
 end

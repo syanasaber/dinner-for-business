@@ -19,9 +19,16 @@ Rails.application.routes.draw do
         end
     end
     
-    resources :articles, only: [:show, :new, :create, :destroy]
+    resources :articles, only: [:show, :new, :create, :destroy]  do
+        member do
+            get :reviewing
+        end
+    end
+    
     resources :relationships, only: [:create, :destroy]
+    
     resources :reviews, only: [:show, :new, :create, :edit, :update, :destroy]
+    
     resources :likes, only: [:create, :destroy]
 end
  

@@ -29,6 +29,14 @@ class ArticlesController < ApplicationController
     redirect_back(fallback_location: user_path)
   end
   
+  def reviewing
+     @articles = Article.all
+     @article = @articles.find(params[:id])
+     @review = Review.new
+     @reviews = @article.reviews
+  end
+     
+  
   
   private
   
@@ -36,6 +44,7 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:shop_name, :shop_url, :address, :image1, :image2, :image3, :image4, :image5, :image6, :area, :station, :walk_time,
         :main, :alcohol_type, :food_type, :budget, :situation, :softdrink, :room_type, :smoking, :net_reservation, :review)
   end
+  
   
   def correct_user
     @article = current_user.articles.find_by(id: params[:id])

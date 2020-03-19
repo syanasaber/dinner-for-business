@@ -95,7 +95,7 @@
             <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">
                 フォロワー<span class="badge badge-secondary"><%= @count_followers %></span></a></li>
             
-            <li class="nav-item"><a href="#" class="nav-link">お気に入り記事<span class="badge badge-secondary"></span></a></li>
+            <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入り記事<span class="badge badge-secondary"></span></a></li>
         </ul>
     
         <%= render 'articles/articles', articles: @articles %>

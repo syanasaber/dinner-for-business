@@ -1,0 +1,16 @@
+
+    <ul class="list-unstyled">
+            <% reviews.each do |review| %>
+                <li class="media mb-3">
+                    
+                    <div class="">  
+                          <%= review.content %>
+                              
+                    </div>
+                    
+                    <div class="">
+                        <%= link_to "口コミを削除する", review, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+                    </div>
+                </li>
+            <% end %>
+    </ul>
