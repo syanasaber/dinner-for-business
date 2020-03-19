@@ -18,6 +18,16 @@ class Article < ApplicationRecord
     mount_uploader :image5, ImageUploader
     mount_uploader :image6, ImageUploader
     
+    def self.search(search)
+        if search
+          Article.where(['area LIKE? OR station LIKE?', "%#{search}%", "%#{search}%"])
+        else
+          Article.none
+        end
+    end
+    
+    
+    
     
     private
         def form_blank?

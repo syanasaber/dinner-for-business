@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @articles = @user.feed_articles.order(id: :desc).page(params[:page])
+    @articles = @user.feed_articles.order(id: :desc).page(params[:page]).per(5)
   end
 
   def new
@@ -26,7 +26,6 @@ class UsersController < ApplicationController
       flash.now[:danger] = 'ユーザーの登録に失敗しました。'
       render :new
     end
-    
   end
 
   def edit
@@ -50,17 +49,19 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
-   def likes
-      @user = User.find(params[:id])
-      @favorites = @user.favorites.page(params[:page])
-   end
+  def likes
+    @user = User.find(params[:id])
+    @favorites = @user.favorites.page(params[:page])
+  end
   
-  
+  def search
+    @articles = Article.search(params[:search]).order(id: "DESC")
+  end
+   
   private
   
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :job_field, :job_class, :my_area1, :my_area2, :my_area3)
   end
-  
   
 end

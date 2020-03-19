@@ -6,23 +6,26 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
+
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         
         <% if logged_in? %>
-          
+          <li class="list-unstyled" style="margin-right: 20px;"><%= link_to 'マイページTOP', user_path(current_user), class: 'nav-link' %></li>
+      
           <!--  ★★ここは後ほどリンク付け設定を行う -->
-          <li>お店の検索</li>
+          <li class="list-unstyled" style="margin-right: 20px;"><%= link_to 'お店の検索', search_users_path, class: 'nav-link' %></li>
+
           
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li class="dropdown-item"><%= link_to 'マイページTOP', user_path(current_user) %></li>
-              <li class="dropdown-divider"></li>
+              
               <li class="dropdown-item">プロフィール設定</li>
               <li class="dropdown-divider"></li>
-              <li class="dropdown-item">お気に入り一覧</li>
+              <li class="dropdown-item"><%= link_to 'お気に入り一覧', likes_user_path(current_user) %></li>
               <li class="dropdown-divider"></li>
               <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
             </ul>

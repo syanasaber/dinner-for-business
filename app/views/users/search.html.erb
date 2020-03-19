@@ -1,0 +1,23 @@
+
+
+    <h1>User search</h1>
+    <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+      <p>■エリア、駅名、店名等</p>
+      <%= f.text_field :search %>
+      
+      <%= f.submit :search %>
+    <% end %>
+    <table>
+      <thead>
+        <tr>
+          <th>検索結果</th>
+        </tr>
+      </thead>
+      <tbody>
+            <% @articles.each do |art| %>
+              <tr>
+                <td><%= art.shop_name %></td>
+              </tr>
+            <% end %>
+      </tbody>
+    </table>

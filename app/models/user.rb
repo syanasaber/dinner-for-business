@@ -50,4 +50,5 @@ class User < ApplicationRecord
         self.favorites.include?(article)
     end
     
+    
 end
