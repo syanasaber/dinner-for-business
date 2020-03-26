@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+    require 'open-uri'
+    require 'json'
     
     include SessionsHelper
     
@@ -6,7 +8,7 @@ class ApplicationController < ActionController::Base
     
     def require_user_logged_in
         unless logged_in?
-            redirect_to login_url
+            redirect_to selectpage_path
         end
     end
     

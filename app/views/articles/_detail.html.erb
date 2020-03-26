@@ -284,25 +284,35 @@
               <%= link_to "投稿者", user_path %>
             </div>
             
-            <div class="col-sm-4">
-              <%= link_to "口コミを投稿する", new_review_path, class: 'btn btn-secondary btn-sm' %>
-            </div>
-          
+
             <div class="col-sm-4">
               <% if current_user == article.user %>
               <%= link_to "削除", article, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
             <% end %>
             </div>
-          
-          
-          <div class="col-sm-10">                
-            <% if current_user.favoriting?(article) %>
-                <%= link_to "お気に入りを解除", like_path(article.id), method: :delete, class: 'btn btn-danger btn-sm' %>
-            <% else %>
-                <%= link_to "お気に入り登録する", likes_path(article_id: article.id), method: :do, class: 'btn btn-primary btn-sm' %>
-            <% end %>
           </div>
-        </div>
+          
+          
+          <% if logged_in? %>
+            <div class="row">  
+              <div class="col-sm-6">                
+                <% if current_user.favoriting?(article) %>
+                    <%= link_to "お気に入りを解除", like_path(article.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+                <% else %>
+                    <%= link_to "お気に入り登録する", likes_path(article_id: article.id), method: :do, class: 'btn btn-primary btn-sm' %>
+                <% end %>
+              </div>
+          
+          <% else %>
+               <%= link_to "会員登録してお気に入り登録", signup_path, class: 'btn btn-primary btn-sm' %>
+          <% end %>    
+          
+              <div class="col-sm-6">
+                 <%= link_to "記事を編集する", edit_article_path(article.id), class: 'btn btn-primary btn-sm' %>
+              </div>
+              
+            
+            </div>
         
       </div>
     </li>

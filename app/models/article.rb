@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
     belongs_to :user
-    has_many :reviews
+    has_many :reviews, dependent: :destroy
     
     has_many :likes, dependent: :destroy
     has_many :favorite_users, through: :likes, source: :user
@@ -18,6 +18,8 @@ class Article < ApplicationRecord
     mount_uploader :image5, ImageUploader
     mount_uploader :image6, ImageUploader
     
+    
+    #検索機能
     def self.search(search)
         if search
           Article.where(['area LIKE? OR station LIKE?', "%#{search}%", "%#{search}%"])
@@ -25,8 +27,6 @@ class Article < ApplicationRecord
           Article.none
         end
     end
-    
-    
     
     
     private

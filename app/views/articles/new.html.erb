@@ -14,3 +14,13 @@
 
     <%= render 'form', article: @article %>
     
+    
+    <!--  var lineのとこの変数が取得できてない。-->
+      <script type="text/javascript">
+                        function getstation() {
+                          var line = $('.lines option:selected').text();
+                          var url = 'https://express.heartrails.com/api/json?method=getStations&line=' + line;
+                          alert(url)
+                        };
+          
+      </script>

@@ -37,7 +37,7 @@
         <div class="card border-dark" style="margin-top: 50px;">
             <div class="card-header">
                 <h4 class="card-title">
-                    <%= form_with url: followers_user_path, method: :get, local: true do |f| %>
+                    <%= form_with url: @user, method: :get, local: true do |f| %>
                           <p>■エリア、駅名、店名等</p>
                           <%= f.text_field :search %>
               
@@ -153,6 +153,10 @@
                     </div>
             </div>
         </div>
+        
+  
+    
+       <!-- 記事投稿ボタンを設置するゾーン -->
  
         
     </aside>
@@ -176,11 +180,7 @@
             <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入り記事<span class="badge badge-secondary"></span></a></li>
         </ul>
     
-        <%= render 'users', users: @followers %>
+        <%= render 'articles/articles', articles: @articles %>
         
-    
-    
     </div>
-    
-    
 </div>    

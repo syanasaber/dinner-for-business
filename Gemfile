@@ -58,3 +58,4 @@ gem 'kaminari'
 
 gem 'carrierwave'
 
+gem 'jquery-rails'

@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
-  before_action :require_user_logged_in
-  before_action :correct_user, only: [:destroy]
+  before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   
   def show
     @articles = Article.all
-    @article = @articles.find(params[:id])
+    @article = @articles.find_by(params[:id])
     @review = Review.new
   end
   
@@ -22,6 +22,26 @@ class ArticlesController < ApplicationController
       render :new
     end
   end
+  
+  
+  def edit
+    @articles = Article.all
+    @article = @articles.find(params[:id])
+  end
+  
+  def update
+    @articles = Article.all
+    @article = @articles.find(params[:id])
+
+      if @article.update(article_params)
+        flash[:success] = '記事を編集しました。'
+        render :edit
+      else
+        flash.now[:danger] = '記事を編集できませんでした。'
+        render :edit
+      end
+    
+  end
 
   def destroy
     @article.destroy
@@ -33,9 +53,11 @@ class ArticlesController < ApplicationController
      @articles = Article.all
      @article = @articles.find(params[:id])
      @review = Review.new
+     @user = current_user.id
      @reviews = @article.reviews
   end
-     
+  
+ 
   
   
   private

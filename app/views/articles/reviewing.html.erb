@@ -3,10 +3,12 @@
     
             <h2>口コミの投稿</h2>
             
-            <%= form_with(model: @review, local: true) do |f| %>
-            
+            <%= form_with(model: current_user.reviews.build, local: true) do |f| %>
+               
+              <%= f.text_field :title, class: "text_field" %>
               <%= hidden_field_tag :article_id, @article.id %>
-              <%= f.text_field :content, class: "text-field" %>
+              <%= hidden_field_tag :user_id, current_user.id %>
+              <%= f.text_area :content, class: "text_area" %>
               <%= f.submit '投稿', class: "submit-btn" %>
             <% end %>
         </aside>

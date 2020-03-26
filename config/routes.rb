@@ -2,6 +2,8 @@ Rails.application.routes.draw do
     root to: 'toppages#index'
     
     get 'navigation', to: 'toppages#navigation'
+    get 'selectpage', to: 'toppages#selectpage'
+    post 'change', to: 'toppages#change'
     
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
         member do
             get :followings
             get :followers
+            get :writing
+            get :myarea_list
         end
         
         member do
@@ -20,10 +24,12 @@ Rails.application.routes.draw do
         
         collection do
             get :search
-         end
+            get :user_search
+            
+        end
     end
     
-    resources :articles, only: [:show, :new, :create, :destroy]  do
+    resources :articles, only: [:show, :new, :create, :edit, :update, :destroy]  do
         member do
             get :reviewing
         end

@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html  lang="ja">
   <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- 各サイズで適正表示に-->
     <meta name="viewport" content="width=device-width,
     initial-scale=1, shrink-to-fit=no">
     <title>DinnerPlanner</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
-    
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     
@@ -19,14 +17,93 @@
     <%= stylesheet_link_tag "articles", media: 'all', 'data-turbolinks-track': 'reload'  %>
     
     
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>
     
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+
+  
+
+  
+    <script type="text/javascript">
+    
+          //<[CDATA[
+          
+          // 都道府県プルダウン変更時
+          // $(#pref)→id=prefのhtml文に対して適用
+          
+          
+          var prefObj = {};
+          function PrefChange(){
+            if ($("#pref").val()){
+                                  var url = 'http://express.heartrails.com/api/json?method=getLines'
+                                    + '&prefecture=' + encodeURIComponent( $("#pref").val() )
+                                    + '&jsonp=PrefCallback';
+                                  var prefObj = new JSONscriptRequest( url );
+                                  prefObj.buildScriptTag();
+                                  prefObj.addScriptTag();
+                                } 
+            else {
+                    $("#train").removeOption(/./);
+                  }
+          }
+          
+          function PrefCallback(json){
+            if (!json){ return; }
+            if (json.response.line.length == 0) { return; }
+          　
+          　
+          　//空のオブジェクトを作成
+            var lines = json.response.line;
+            var options = {};
+            for (var i = 0; i < lines.length; i++){
+              options[lines[i]] = lines[i];
+            }
+            $("#train").removeOption(/./);
+            $("#train").addOption(options,false);
+            prefObj.removeScriptTag();
+          }
+          
+        
+          // 路線プルダウン変更時
+          //var urlのところ
+          
+          var trainObj = {};
+          function TrainChange(){
+            if ($("#train").val()){
+              var url = 'http://express.heartrails.com/api/json?method=getStations'
+                + '&line=' + encodeURIComponent( $("#train").val() )
+                + '&jsonp=TrainCallback';
+              trainObj = new JSONscriptRequest( url );
+              trainObj.buildScriptTag();
+              trainObj.addScriptTag();
+            } else {
+              $("#station").removeOption(/./);
+            }
+          }
+          function TrainCallback(json){
+            if (!json){ return; }
+            if (json.response.station.length == 0) { return; }
+          
+            var stations = json.response.station;
+            var options = {};
+            for (var i = 0; i < stations.length; i++){
+              options[stations[i].name] = stations[i].name;
+            }
+            $("#station").removeOption(/./);
+            $("#station").addOption(options,false);
+            trainObj.removeScriptTag();
+          }
+          //]]>
+
+    </script>
+
+
+    
   
   </head>
   
@@ -46,17 +123,42 @@
   
   
   <% else %>
-
-    <body>
-      <%= render 'layouts/navbar' %>
+    <% if logged_in? %>
+      <body>
       
-      <div class="container">
+        <%= render 'layouts/navbar' %>
         
-        <%= render 'layouts/flash_message' %>
-        <%= yield %>
+    　     <div class="create_article"　style="margin: 50px, 10px, 50px;">
+         <p>あなたのおすすめの記事をシェアしよう！</p>
+         
+                  <p><%= link_to '記事を投稿する', new_article_path, class: 'btn btn-lg btn-primary' %></p>
+                  
+              
+          </div>
+  
       
-      </div>
-    </body>
+            
+            
+            <div class="container">
+              
+              <%= render 'layouts/flash_message' %>
+              <%= yield %>
+            
+            </div>
+      </body>
+      
+    <% else %>
+      <body>
+        <%= render 'layouts/navbar' %>
+        
+        <div class="container">
+          
+          <%= render 'layouts/flash_message' %>
+          <%= yield %>
+        
+        </div>
+      </body>
+    <% end %>
     
     
   <% end %>

@@ -19,3 +19,4 @@ Rails.application.config.assets.precompile += %w( toppages.scss )
 Rails.application.config.assets.precompile += %w( users.scss )
 
 Rails.application.config.assets.precompile += %w( articles.scss )
+

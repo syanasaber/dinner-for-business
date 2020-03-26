@@ -15,6 +15,8 @@ class User < ApplicationRecord
     has_many :likes
     has_many :favorites, through: :likes, source: :article
     
+    has_many :reviews
+    
     def follow(other_user)
         unless self == other_user
             self.relationships.find_or_create_by(follow_id: other_user.id)
@@ -31,7 +33,7 @@ class User < ApplicationRecord
     end
     
     def feed_articles
-        Article.where(user_id: self.following_ids + [self.id])
+        Article.where(user_id: self.following_ids)
     end
     
     
@@ -48,6 +50,15 @@ class User < ApplicationRecord
     
     def favoriting?(article)
         self.favorites.include?(article)
+    end
+    
+     #検索機能
+    def self.search(search)
+        if search
+          User.where(['name LIKE?', "%#{search}%"])
+        else
+          User.none
+        end
     end
     
     

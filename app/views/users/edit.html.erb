@@ -1,2 +1,91 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+
+<div class="text-center">
+  <h1>プロフィール編集</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    
+
+    <%= form_with(model: @user, local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="form-group">
+        <%= f.label :ユーザー名, 'ユーザー名' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :メールアドレス, 'メールアドレス' %>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :新規パスワード, '新規パスワード' %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :新規パスワード（確認）, '新規パスワード（確認）' %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+      
+      
+      
+     <div class="form-group">
+        <%= f.label :業界（任意）, '業界（任意）,' %>
+        
+        <!--  ★理想は何かAPIを使って、ドロップダウン選択にさせる -->
+        <%= f.text_field :job_field, class: 'form-control' %>
+      </div>
+      
+      
+      <div class="form-group">
+        <%= f.label :役職（任意）, '役職（任意）' %>
+        
+        <!--  ★理想は何かAPIを使って、ドロップダウン選択にさせる -->
+        <%= f.text_field :job_class, class: 'form-control' %>
+      </div>
+      
+      
+      
+      <ul>
+        <li>
+          
+          <div class="form-group">
+            <%= f.label :よく使うエリア1, 'よく使うエリア1' %>
+            
+            <!--  ★最終的には、ドロップダウン選択のフォームを３つ作って、配置。住所.jp参照-->
+            
+            <%= f.text_field :my_area1 %>
+          </div>
+        </li>
+        
+        <li>  
+          <div class="form-group">
+            <%= f.label :よく使うエリア2, 'よく使うエリア2' %>
+            
+            <!--  ★最終的には、ドロップダウン選択のフォームを３つ作って、配置。住所.jp参照-->
+            
+            <%= f.text_field :my_area2 %>
+          </div>
+        </li>
+        
+        <li>  
+          <div class="form-group">
+            <%= f.label :よく使うエリア3, 'よく使うエリア3' %>
+            
+            <!--  ★最終的には、ドロップダウン選択のフォームを３つ作って、配置。住所.jp参照-->
+            
+            <%= f.text_field :my_area3 %>
+          </div>
+        </li>
+          
+      </ul>
+          
+        
+      <%= f.submit '編集する', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>
