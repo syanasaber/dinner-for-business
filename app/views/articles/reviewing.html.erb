@@ -3,11 +3,14 @@
     
             <h2>口コミの投稿</h2>
             
-            <%= form_with(model: current_user.reviews.build, local: true) do |f| %>
+            <%= form_with(model: @review, local: true) do |f| %>
+               <%= render 'layouts/error_messages', model: f.object %>
+               
+            <%= hidden_field_tag :article_id, @article.id %>
+            <%= hidden_field_tag :user_id, @user.id %>
                
               <%= f.text_field :title, class: "text_field" %>
-              <%= hidden_field_tag :article_id, @article.id %>
-              <%= hidden_field_tag :user_id, current_user.id %>
+       
               <%= f.text_area :content, class: "text_area" %>
               <%= f.submit '投稿', class: "submit-btn" %>
             <% end %>
@@ -22,9 +25,15 @@
                     <li class="nav-item"><a href="<%= reviewing_article_path %>" class="nav-link <%= 'active' if current_page?(reviewing_article_path) %>">口コミ<span class="badge badge-secondary"></span></a></li>
                 </ul>
             
-            <%= render 'articles/article_review', reviews: @reviews %>
+            <%= render 'articles/article_review', reviews: @reviews, article: @article %>
+            
+            
+            
         
         </div>
+        
+        
+        <!--  パーシャル　引数は複数渡せる。 -->
 </div>
 
 

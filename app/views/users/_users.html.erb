@@ -9,10 +9,10 @@
         <img class="mr-2 rounded" src="<%= gravatar_url(user, { size: 50 }) %>" alt="">
         <div class="media-body">
           <div>
-            <%= user.name %>
+            <p>ユーザー名：<%= user.name %></p>
           </div>
           <div>
-            <p><%= link_to 'ユーザーページへ', user_path(user) %></p>
+            <p><%= link_to 'ユーザーページへ', user_path(user), class: 'btn btn-primary btn-sm' %></p>
           </div>
         </div>
       </li>

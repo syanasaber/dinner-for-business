@@ -1,3 +1,23 @@
 <!-- js.erbファイルに書き込む場合は<script>いらない-->
-    document.getElementById("change").innerHTML="<%= @hello %>"
 
+<% @value.each do |line| %>
+alert(line);
+<% end %>
+
+
+  var array = <% @value %>;
+  
+  
+  function cleate_line_select () {
+  for (var i = 0; i < array.length; i++) { 
+      var line = array[i];
+      var select = document.getElementById("change");
+      var option = document.createElement("option");
+      option.text = line;
+      option.value = line;
+      select.appendChild(option);
+        }
+    }
+    
+    
+    

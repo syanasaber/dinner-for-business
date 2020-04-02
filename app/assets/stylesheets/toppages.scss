@@ -1,7 +1,13 @@
+
+
 header {
     width: 1260px;
     height: 100px;
     margin: 0 auto;
+}
+
+#root-top {
+    margin: 0;
 }
 
 
@@ -12,6 +18,7 @@ p,h1,h2,h3,h4,h5,h6 {
 
 
 nav ul li {
+    color: white;
     text-decoration: none;
     line-height: 2;
 }
@@ -24,9 +31,7 @@ li:visited {
     color: yellow;
 }
 
-li:hover {
-    text-decoration: underline;
-}
+
 
 nav ul {
     margin: 0;
@@ -56,14 +61,10 @@ img {
 }
 
 .global-nav li:hover {
-    border-bottom: 2px solid blue;
     padding-bottom: 3px;
     text-decoration: none;
 }
 
-#wrapper {
-    clear: both;
-}
 
 .content {
     width: 960px;
@@ -72,24 +73,39 @@ img {
     text-align: center;
 }
 
-footer {
-    width: 960px;
-    margin: 500px auto 0 auto;
-    text-align: left;
-    padding: 20px 0;
-}
+
 
 h1 {
     font-size: 80px;
     line-height: 2;
     color: black;
-    font-family: "Hiragino Sans";
     margin-bottom: 15px;
+    
 }
+
+.top-title h1 {
+    font-family: 'Cherry Swash', cursive;
+}
+
 
 .content {
     margin-top: 50px;
 }
+
+.sub-message {
+    margin-top: 50px;
+}
+
+.top-search {
+    margin-top: 180px;
+}
+
+.wrapper {
+    width: 100%;
+}
+
+
+
 
 
 

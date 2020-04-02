@@ -81,9 +81,37 @@ class UsersController < ApplicationController
   #ログインユーザーが登録したマイエリア情報にマッチする記事だけを取得するコード
   
   #今日家帰って検索条件設定の確認
+  #Article側のエリア化、最寄りの空欄
+  
+  #判定nilに問題あり。
+  #フォームに何も入れてないのに、nil判定がfalse、""判定にしたら上手くいった。
+  
   def myarea_list
-    @myarea_articles = Article.where(['station LIKE?', "%春日野道%"
-    ]).order(id: :desc).page(params[:page])
+    
+    @myarea_articles = [];
+    
+
+    if (current_user.my_area1 != "")
+      @myarea_articles += Article.where(['area LIKE? OR station LIKE?', "%#{current_user.my_area1}%", "%#{current_user.my_area1}%"])
+    else
+      Article.none
+    end
+    
+    
+    if (current_user.my_area2 != "")
+      @myarea_articles += Article.where(['area LIKE? OR station LIKE?', "%#{current_user.my_area2}%", "%#{current_user.my_area2}%"])
+    else
+      Article.none
+    end
+    
+      
+    if (current_user.my_area3 != "")
+      @myarea_articles += Article.where(['area LIKE? OR station LIKE?', "%#{current_user.my_area3}%", "%#{current_user.my_area3}%"])
+    else
+      Article.none
+    end  
+      
+    
   end
   
   

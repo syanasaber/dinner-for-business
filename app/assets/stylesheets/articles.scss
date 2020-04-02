@@ -2,4 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.card {
+    color: black;
+    text-decoration: none;
+    
+}
 
+.card-header {
+    background-color:#999999;
+}
+
+.card-body {
+    background-color: #CEF9DC;
+}
+
+.card-footer {
+    background-color:#FFFFCC;
+}
+
+#sub-info {
+    display: block;
+    margin-left: 80px;
+    padding: 10px 16px;
+
+    background-color: #5BFF7F;
+}
+
+.rst-main_visual {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+}

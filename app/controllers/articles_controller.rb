@@ -3,13 +3,13 @@ class ArticlesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   
   def show
-    @articles = Article.all
-    @article = @articles.find_by(params[:id])
+    @article = Article.find(params[:id])
     @review = Review.new
+    @user = current_user
   end
   
   def new
-    @article = Article.new
+    @article = current_user.articles.build
   end
   
   def create
@@ -25,13 +25,11 @@ class ArticlesController < ApplicationController
   
   
   def edit
-    @articles = Article.all
-    @article = @articles.find(params[:id])
+    @article = Article.find(params[:id])
   end
   
   def update
-    @articles = Article.all
-    @article = @articles.find(params[:id])
+    @article = Article.find(params[:id])
 
       if @article.update(article_params)
         flash[:success] = '記事を編集しました。'
@@ -50,10 +48,9 @@ class ArticlesController < ApplicationController
   end
   
   def reviewing
-     @articles = Article.all
-     @article = @articles.find(params[:id])
+     @article = Article.find(params[:id])
      @review = Review.new
-     @user = current_user.id
+     @user = current_user
      @reviews = @article.reviews
   end
   
@@ -75,3 +72,9 @@ class ArticlesController < ApplicationController
     end
   end
 end
+
+
+
+#記事投稿できなかったのは、form_with内部にもう一個form_with入れてたから。 -->
+#急に今までの機能がえらーになったら冷静に、どの部分をいじってきたか見直して、そこを一旦もとに戻してみる。
+

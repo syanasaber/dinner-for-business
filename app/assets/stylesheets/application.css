@@ -18,22 +18,58 @@
  
  
  body {
+     
      margin: 0;
      padding: 0;
-     background-color: #deb887;
-     
+     background-color: #555555;
  }
  
+ #main_visual {
+  height: 450px;
+  width: 100%;
+ }
+ 
+ #main_visual img {
+  height: 450px;
+  width: 100%;
+ }
+ 
+
  
  .top {
-  
+    color:#DDFFFF	;
     margin: 0;
     padding: 0;
     background-color: gray;
-    background-image: url(main-visual.jpg);
+    background-image: url(main-back_visual.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
   
  }
+ 
+ #main_visual {
+    display: flex;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    justify-content: center;
+    align-items: center;
+    
+ }
+ 
+ 
+ 
+ footer {
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+
+    position: relative;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+}
+
+
+
+

@@ -3,16 +3,27 @@
             <% reviews.each do |review| %>
                 <li class="media mb-3">
                     
-                    <div class="">
-                          
-                          <p><%= review.title></p>
-                          <p><%= review.content %></p>
-                              
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h3 class="text-left"><%= review.title %></h3>
+                        </div>
+                        
+                        <div class="col-sm-4">
+                            <h5 class="text-left"><%= review.content %></h5>
+                        </div>
+                        
+                        
+                        
+                        <div class="offset-sm-1 col-sm-3">
+                                <%= form_with(model: review, local: true, method: :delete) do |f| %>
+                                    <%= render 'layouts/error_messages', model: f.object %>
+                                        
+                                      <%= hidden_field_tag :article_id, article.id %>
+                                      <%= f.submit '削除', class: "submit-btn" %>
+                                <% end %>
+                        </div>
                     </div>
                     
-                    <div class="">
-                        <%= link_to "口コミを削除する", review, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-                    </div>
                 </li>
             <% end %>
     </ul>

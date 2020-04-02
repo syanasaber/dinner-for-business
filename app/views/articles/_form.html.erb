@@ -1,15 +1,7 @@
 
 
     <%= form_with(model: article, local: true) do |f| %>
-        <% if article.errors.any? %>
-            <div id="error_explation class="alert alert-warning">
-                <ul class="mb-0">
-                    <% article.errors.full_messages.each do |art| %>
-                        <li><%= art %></li>
-                    <% end %>
-                </ul>
-            </div>
-        <% end %>
+       <%= render 'layouts/error_messages', model: f.object %>
         
         <form>
         
@@ -94,36 +86,18 @@
             
         
             <div class="form-group row">
-                <%= form_with(url: new_article_path, local: true) do |f| %>
-                    <form class="lines" onchange="getstation()">
-                        <%= f.label :最寄駅, '最寄駅', class: 'col-sm-2' %>
-                　　　　
-                　　　　<% tokyo = "東京都" %>
-                            <% url = URI.encode 'https://express.heartrails.com/api/json?method=getLines&prefecture=' + tokyo %>
-                            <% json = open(url).read %> 
-                            <% hash = JSON.parse(json) %>
-                                <% hash.each do |tok, otk| %>
-                                    <% otk.each do |key, value| %>
-                                       
-                                          <%= f.select :station, value, class: 'col-sm-4' %>  
-                                        
-                                    <% end %>
-                                <% end %>
-                            
-                            <input type="button" class="button3" onclick="getstation()" value="都道府県を選択">
-                                
-                    </form>
-                <% end %>
+                
+                    <%= f.label :最寄駅, '最寄駅', class: 'col-sm-2' %>
+            　　　　  
+                    <%= f.text_field :station, class: 'col-sm-3' %>  
+                           
                 
                 
-                
-                    <%= f.label :駅からの距離, '駅からの距離', class: 'offset-sm-1 col-sm-2' %>
+                    <%= f.label :駅からの距離, '駅からの距離', class: 'col-sm-2' %>
                
   
-                    <%= f.text_field :walk_time, class: 'col-sm-2' %>
+                    <%= f.text_field :walk_time, class: 'col-sm-3' %>
                     
-                   
-    
                 
             </div>
             

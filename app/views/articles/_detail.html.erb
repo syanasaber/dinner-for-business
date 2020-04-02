@@ -299,7 +299,7 @@
                 <% if current_user.favoriting?(article) %>
                     <%= link_to "お気に入りを解除", like_path(article.id), method: :delete, class: 'btn btn-danger btn-sm' %>
                 <% else %>
-                    <%= link_to "お気に入り登録する", likes_path(article_id: article.id), method: :do, class: 'btn btn-primary btn-sm' %>
+                    <%= link_to "お気に入り登録する", likes_path(article_id: article.id), method: :post, class: 'btn btn-primary btn-sm' %>
                 <% end %>
               </div>
           
@@ -308,7 +308,7 @@
           <% end %>    
           
               <div class="col-sm-6">
-                 <%= link_to "記事を編集する", edit_article_path(article.id), class: 'btn btn-primary btn-sm' %>
+                 <%= link_to "記事を編集する", edit_article_path(article), class: 'btn btn-primary btn-sm' %>
               </div>
               
             

@@ -13,37 +13,45 @@
           
                 <!-- ロゴ -->
                 <!-- 後ほどロゴ作成して挿入する-->
+                
+                
+                <!-- link_toに組み込む文字はデフォルトで青色になる可能性あり-->
+                <!-- 色替えには、style: オプションで-->
 
                 
-    <div class="row">
+    <div id="root-top" class="row">
         <div class="header">
             <div class="logo">
-                <h3><a href="/"><img src="" alt="dinner planner"></a></h3>
+                <h2><a href="/"><img src="/assets/mainlogo.png" alt="dinner planner"></a></h2>
             </div>
             <nav>
                 <ul class="global-nav">
-                    <li><%= link_to 'おすすめ活用法', navigation_path, class: 'btn btn-lg btn-primary' %></li>
-                    <li><%= link_to '新規会員登録', signup_path, class: 'btn btn-lg btn-primary' %></li>
-                    <li><%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-primary' %></li>
+                    <li><%= link_to 'おすすめ活用法', navigation_path, style: 'color:white' %></li>
+                    <li><%= link_to '新規会員登録', signup_path, style: 'color:white' %></li>
+                    <li><%= link_to 'ログイン', login_path, style: 'color:white' %></li>
                 </ul>
             </nav>
         </div>
         
-        
-        <div class="content">
-            <h1>その時々に適う
-            <br>お店選びをあなたに</h1>
-            <p>みんなのイチオシのお店をシェアしあい、様々なシチュエーションに合わせて最適なお店選びをしよう！！
-            </p>
+        <div class="wrapper">
+            <div class="top-title">
+                <h1 style="color:#AAFFFF">その時々に適う
+                <br>お店選びをあなたに</h1>
+            </div>
             
-            <!-- ここに検索用の入力フォームと検索ボタンを設置する -->
-            <p class="btn"><%= link_to 'お店の検索', search_users_path %></p>
+            <div class="sub-message">
+                <h3 style="color:blue">みんなのイチオシのお店をシェアして、様々なシチュエーションに
+                <br>合わせた最適なお店選びをしよう！！
+                </h3>
+            </div>
+            
+            <div class="top-search">    
+                <!-- ここに検索用の入力フォームと検索ボタンを設置する -->
+                <%= link_to 'お店の検索', search_users_path, class: 'btn btn-info', style: 'font-size:40px' %>
+            </div>
         </div>
         
-        <div class="footer">
-            <!-- コピーライト仮作成　　後ほど精密修正へ-->
-                <small>(C)2020 syanta-studio</small>
-        </div>
+      
                 
     </div>
 

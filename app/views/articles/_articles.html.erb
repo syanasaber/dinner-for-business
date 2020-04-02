@@ -12,7 +12,7 @@
       <img class="mr-2 rounded" src="<%= gravatar_url(article.user, { size: 50 }) %>" alt="">
       <div class="media-body">
         <div class="user-name">
-          <p>投稿者：<%= link_to article.user.name, user_path(article.user) %></p><span class="text-muted">投稿日時：<%= article.created_at %></span>
+          <p>投稿者：<%= link_to article.user.name, user_path(article.user) %></p><span>投稿日時：<%= article.created_at %></span>
         </div>
         
         
@@ -25,11 +25,11 @@
                           <p>店名：<%= article.shop_name %></p>
                         </div>
                         
-                        <div class="offset-sm-1 col-sm-3">
+                        <div class="col-sm-4">
                           <p>エリア：<%= article.area %></p>
                         </div>
                         
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                           <p>最寄駅：<%= article.station %></p>
                         </div>
                       </div>
@@ -48,7 +48,7 @@
                   
                   
           
-                    <div class="col-sm-6">
+                    <div id="sub-info" class="col-sm-6">
                        <p class="text-left">予算：<%= article.budget %>円</p>
                   
                        <p class="text-left">雰囲気：<%= article.situation %></p>
@@ -104,7 +104,7 @@
           
           
                     <div class="col-sm-3">
-                        <%= link_to "詳細", article_path(article) , class: 'btn btn-primary btn-sm' %>
+                        <%= link_to "詳細", article , class: 'btn btn-primary btn-sm' %>
                     </div>
                     
                     
