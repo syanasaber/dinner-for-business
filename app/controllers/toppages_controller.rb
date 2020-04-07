@@ -5,8 +5,6 @@ class ToppagesController < ApplicationController
   
   def change
     
-     @hello = "hello world"
-    
     @pref = params[:prefecture]
     @lines =  "http://express.heartrails.com/api/json?method=getLines&prefecture="
     
@@ -16,20 +14,39 @@ class ToppagesController < ApplicationController
     @hash = JSON.parse(@json_url)
     
     
-    @value = []
-    
     @hash.each do |key, value|
         value.each do |key2, value2|
-          @value.push(value2)
+          @value = value2
         end
     end
-  
-
-    
     
     render 'change.js.erb'
   end
   
+  
+  def change_station
+    @value = []
+    
+    @line = params[:lines]
+    @stations =  "http://express.heartrails.com/api/json?method=getStations&line="
+    
+    @url = URI.encode @stations.concat(@line)
+    
+    @json_url = open(@url).read
+    @hash = JSON.parse(@json_url)
+    
+    
+    @hash.each do |key, value|
+        value.each do |key2, value2|
+          value2.each do |value3|
+            value4 = value3["name"]
+              @value.push(value4)
+          end
+        end
+    end
+    
+    render 'change_station.js.erb'
+  end
   
 end
 

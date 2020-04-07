@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get 'navigation', to: 'toppages#navigation'
     get 'selectpage', to: 'toppages#selectpage'
     post 'change', to: 'toppages#change'
+    post 'change_station', to: 'toppages#change_station'
     
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
         collection do
             get :search
             get :user_search
-            
+            get :prev_search
         end
     end
     

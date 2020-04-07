@@ -9,6 +9,8 @@ class Article < ApplicationRecord
     validates :shop_name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
     validates :shop_url, uniqueness: { case_sensitive: false }, if: :form_blank?
     validates :address, uniqueness: { case_sensitive: false }, if: :form_blank?
+    validates :area, presence: true, length: { maximum: 50 }, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/ }
+    #エリアカラムについては、アルファベット表記を禁止
   
     
     mount_uploader :image1, ImageUploader
@@ -22,7 +24,7 @@ class Article < ApplicationRecord
     #検索機能
     def self.search(search)
         if search
-          Article.where(['area LIKE? OR station LIKE?', "%#{search}%", "%#{search}%"])
+          Article.where(['area LIKE? OR station LIKE? OR shop_name LIKE?', "%#{search}%", "%#{search}%", "%#{search}%"])
         else
           Article.none
         end

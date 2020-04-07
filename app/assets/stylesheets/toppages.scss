@@ -28,7 +28,7 @@ li {
 }
 
 li:visited {
-    color: yellow;
+    color: black;
 }
 
 
@@ -83,8 +83,8 @@ h1 {
     
 }
 
-.top-title h1 {
-    font-family: 'Cherry Swash', cursive;
+#wrapper .top-title h1 {
+    font-style: italic;
 }
 
 
@@ -97,7 +97,7 @@ h1 {
 }
 
 .top-search {
-    margin-top: 180px;
+    margin-top: 120px;
 }
 
 .wrapper {

@@ -8,48 +8,53 @@
       <img class="mr-2 rounded" src="<%= gravatar_url(article.user, { size: 50 }) %>" alt="">
       <div class="media-body">
         <div>
-          <%= link_to article.user.name, user_path(article.user) %> <span class="text-muted">posted at <%= article.created_at %></span>
+          <p class="text-left">投稿者：<%= link_to article.user.name, user_path(article.user) %><span style="color:white;">投稿日時：<%= article.created_at %></span></p>
         </div>
         
-              <!-- お店基本情報-->
+                  <!-- お店基本情報-->
+                  
+                  
+                <h3>◆基本情報◆</h3>  
+                <div id="basic-info">
+                    <div class="rst-info row">
+                      <div class="col-sm-4">
+                        <p>店名：<%= article.shop_name %></p>
+                      </div>
+                      
+                      <div class="offset-sm-1 col-sm-3">
+                        <p>エリア：<%= article.area %></p>
+                      </div>
+                      
+                      <div class="col-sm-3">
+                        <p>最寄駅：<%= article.station %></p>
+                      </div>
+                    </div>
+                    
+                    
+                    <div class="rst-info row">
+                      <div class="col-sm-4">
+                        <p>サイト：<%= article.shop_url %></p>
+                      </div>
+                      
+                      
+                      <div class="offset-sm-4 col-sm-3">
+                        <p>アクセス：徒歩<%= article.walk_time %>分</p>
+                      </div>
+                    </div>
+                    
+                    <div class="rst-info row">
+                      <div class="col-sm-4">
+                        <p>予算：約<%= article.budget %>円</p>
+                      </div>
+                    </div>
+                </div>  
             
-                <div class="rst-info row">
-                  <div class="col-sm-4">
-                    <p>店名：<%= article.shop_name %></p>
-                  </div>
-                  
-                  <div class="offset-sm-1 col-sm-3">
-                    <p>エリア：<%= article.area %></p>
-                  </div>
-                  
-                  <div class="col-sm-3">
-                    <p>最寄駅：<%= article.station %></p>
-                  </div>
-                </div>
-                
-                
-                <div class="rst-info row">
-                  <div class="col-sm-4">
-                    <p>サイト：<%= article.shop_url %></p>
-                  </div>
-                  
-                  
-                  <div class="offset-sm-4 col-sm-3">
-                    <p>アクセス：徒歩<%= article.walk_time %>分</p>
-                  </div>
-                </div>
-                
-                <div class="rst-info row">
-                  <div class="col-sm-4">
-                    <p>予算：約<%= article.budget %>円</p>
-                  </div>
-                </div>
-              
               <!-- メインビジュアル　複数表示-->  
                 
+                <!-- 投稿情報がない場合は、noimage、情報なしにて表示するように -->
                 <div class="rst-main_visual">
-                  <div class="rst-imaage">
-                      <h2>店舗写真</h2>
+                  <div class="rst-image">
+                      <h3>◆店舗写真◆</h3>
                       
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                               <ol class="carousel-indicators">
@@ -60,44 +65,94 @@
                         
                         <div class="carousel-inner">    
                               <div class="carousel-item active">
-                                <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
-                                    src="<%= article.image1.url %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
-                                       aria-label="Placeholder: First slide"><title>Placeholder</title><rect fill="#777" width="100%" height="100%"/>
+                                  <% if article.image1? %>
+                                      <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
+                                      src="<%= article.image1.url %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                                      aria-label="Placeholder: First slide">
+                                  <% else %>
+                                      <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
+                                      src="/assets/side-no-image.png" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                                      aria-label="Placeholder: First slide">
+                                  <% end %>
+                                       
+                                       <title>Placeholder</title><rect fill="#777" width="100%" height="100%"/>
                                        <text fill="#555" dy=".3em" x="50%" y="50%">スライド1</text></img>
+                                    
                               </div>
                                 
                                   <div class="carousel-item">
-                                    <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
-                                        src="<%= article.image2.url %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
-                                           aria-label="Placeholder: First slide"><title>Placeholder</title><rect fill="#777" width="100%" height="100%"/>
+                                    <% if article.image2? %>
+                                      <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
+                                      src="<%= article.image2.url %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                                      aria-label="Placeholder: First slide">
+                                    <% else %>
+                                        <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
+                                        src="/assets/side-no-image.png" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                                        aria-label="Placeholder: First slide">
+                                    <% end %>
+                                           
+                                           
+                                           <title>Placeholder</title><rect fill="#777" width="100%" height="100%"/>
                                            <text fill="#555" dy=".3em" x="50%" y="50%">スライド2</text></img>
                                   </div>
                                   
                                   <div class="carousel-item">
-                                    <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
-                                        src="<%= article.image3.url %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
-                                           aria-label="Placeholder: First slide"><title>Placeholder</title><rect fill="#777" width="100%" height="100%"/>
+                                    <% if article.image3? %>
+                                      <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
+                                      src="<%= article.image3.url %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                                      aria-label="Placeholder: First slide">
+                                    <% else %>
+                                        <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
+                                        src="/assets/side-no-image.png" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                                        aria-label="Placeholder: First slide">
+                                    <% end %>
+                                           
+                                           <title>Placeholder</title><rect fill="#777" width="100%" height="100%"/>
                                            <text fill="#555" dy=".3em" x="50%" y="50%">スライド3</text></img>
                                   </div>
                                   
                                   <div class="carousel-item">
-                                    <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
-                                        src="<%= article.image4.url %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
-                                           aria-label="Placeholder: First slide"><title>Placeholder</title><rect fill="#777" width="100%" height="100%"/>
+                                    <% if article.image4? %>
+                                      <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
+                                      src="<%= article.image4.url %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                                      aria-label="Placeholder: First slide">
+                                    <% else %>
+                                        <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
+                                        src="/assets/side-no-image.png" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                                        aria-label="Placeholder: First slide">
+                                    <% end %>
+                                           
+                                           <title>Placeholder</title><rect fill="#777" width="100%" height="100%"/>
                                            <text fill="#555" dy=".3em" x="50%" y="50%">スライド4</text></img>
                                   </div>
                                   
                                   <div class="carousel-item">
-                                    <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
-                                        src="<%= article.image5.url %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
-                                           aria-label="Placeholder: First slide"><title>Placeholder</title><rect fill="#777" width="100%" height="100%"/>
+                                    <% if article.image5? %>
+                                      <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
+                                      src="<%= article.image5.url %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                                      aria-label="Placeholder: First slide">
+                                    <% else %>
+                                        <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
+                                        src="/assets/side-no-image.png" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                                        aria-label="Placeholder: First slide">
+                                    <% end %>
+                                           
+                                           <title>Placeholder</title><rect fill="#777" width="100%" height="100%"/>
                                            <text fill="#555" dy=".3em" x="50%" y="50%">スライド5</text></img>
                                   </div>
                                   
                                   <div class="carousel-item">
-                                    <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
-                                        src="<%= article.image6.url %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
-                                           aria-label="Placeholder: First slide"><title>Placeholder</title><rect fill="#777" width="100%" height="100%"/>
+                                    <% if article.image6? %>
+                                      <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
+                                      src="<%= article.image6.url %>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                                      aria-label="Placeholder: First slide">
+                                    <% else %>
+                                        <img class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" width="800" height="400" 
+                                        src="/assets/side-no-image.png" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" 
+                                        aria-label="Placeholder: First slide">
+                                    <% end %>
+                                           
+                                           <title>Placeholder</title><rect fill="#777" width="100%" height="100%"/>
                                            <text fill="#555" dy=".3em" x="50%" y="50%">スライド6</text></img>
                                   </div>
                         </div>
@@ -118,9 +173,9 @@
                 
                 
             <!-- ここからラッパー-->
-                <div class="rst-info-wrapper" style="margin-top: 10px;">
+                <div class="rst-info-wrapper">
                   <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="card">
                           <div class="card-header">
                               <h3 class="card-title">
@@ -132,33 +187,36 @@
                               <div class="image-picture">
                                 <% if article.alcohol_type == "ビール" %>
                                   <img width="100" height="100" src="/assets/beer.jpg" alt="ビール" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">ビール</h3>
+                                  <h5 class="mt-20" style="float: flex">ビール</h5>
                                 
                                 <% elsif article.alcohol_type == "カクテル" %>
                                   <img width="100" height="100" src="/assets/caktel.jpg" alt="カクテル" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">カクテル</h3>
+                                  <p class="mt-20" style="float: flex">カクテル</p>
                                   
                                   
                                 <% elsif article.alcohol_type == "ワイン" %>
                                   <img width="100" height="100" src="/assets/wine.jpg" alt="ワイン" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">ワイン</h3>
+                                  <h5 style="float: flex">ワイン</h5>
                                   
                                 <% elsif article.alcohol_type == "日本酒" %>
                                   <img width="100" height="100" src="/assets/japanese.jpg" alt="日本酒" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">日本酒</h3>
+                                  <h5 class="mt-20" style="float: flex">日本酒</h5>
                                 
                                 <% elsif article.alcohol_type == "焼酎" %>
                                   <img width="100" height="100" src="/assets/syo-tyu.jpg" alt="焼酎" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">焼酎</h3>
+                                  <h5 class="mt-20" style="float: flex">焼酎</h5>
                                   
                                 <% elsif article.alcohol_type == "ウイスキー" %>
                                   <img width="100" height="100" src="/assets/wisky.jpg" alt="ウイスキー" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">ウイスキー</h3>
+                                  <p class="mt-20" style="float: flex">ウイスキー</p>
                                 
                                 <% elsif article.alcohol_type == "その他" %>
                                   <img width="100" height="100" src="/assets/main-visual.jpg" alt="その他" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">その他</h3>
+                                  <h5 class="mt-20" style="float: flex">その他</h5>
                                   
+                                <% else %>
+                                  <img width="100" height="100" src="/assets/noimage.png" alt="その他" style="float: left;">
+                                  <h5 class="mt-20" style="float: flex">情報無し</h5>
                                 <% end %>
                                 
                               </div>
@@ -168,7 +226,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="card">
                           <div class="card-header">
                               <h3 class="card-title">
@@ -202,6 +260,9 @@
                                 <% elsif article.food_type == "その他" %>
                                   <img width="100" height="100" src="/assets/wisky.jpg" alt="その他" style="float: left;">
                                   <h3 class="mt-20" style="float: flex;">その他</h3>
+                                <% else %>
+                                  <img width="100" height="100" src="/assets/noimage.png" alt="その他" style="float: left;">
+                                  <h5 class="mt-20" style="float: flex">情報無し</h5>
                                 
                                 <% end %>
                                 
@@ -211,108 +272,116 @@
                           
                         </div>
                     </div>
-                    
-                    <div class="col-sm-4">
-                        <div class="card">
-                          <div class="card-header">
-                              <h3 class="card-title">
-                                  こだわり(食)
-                              </h3>
-                          </div>
-                    
-                          <div class="card-body">
-                              <div class="image-picture">
-                                <% if article.situation == "社長・経営者クラス" %>
-                                  <img width="100" height="100" src="/assets/president.jpg" alt="社長・経営者クラス" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">社長・経営者クラス</h3>
-                                
-                                <% elsif article.situation == "役員クラス" %>
-                                  <img width="100" height="100" src="/assets/yakuinn.jpg" alt="役員クラス" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">役員クラス</h3>
-                                  
-                                  
-                                <% elsif article.situation == "部長クラス" %>
-                                  <img width="100" height="100" src="/assets/teamleader.jpg" alt="部長クラス" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">部長クラス</h3>
-                                  
-                                <% elsif article.situation == "役職クラス" %>
-                                  <img width="100" height="100" src="/assets/groupleader.jpg" alt="役職クラス" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">役職クラス</h3>
-                                
-                                <% elsif article.situation == "担当レベル" %>
-                                  <img width="100" height="100" src="/assets/crient.jpg" alt="担当レベル" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">担当レベル</h3>
-                                  
-                                <% end %>
+                  </div>  
+                  
+                      <div id="situation" class="row">
+                        <div class="offset-sm-1 col-sm-10">
+                            <div class="card">
+                              <div class="card-header">
+                                  <h3 class="card-title">
+                                      雰囲気
+                                  </h3>
                               </div>
-                          </div>  
+                        
+                              <div class="card-body">
+                                  <div class="image-picture">
+                                    <% if article.situation == "社長・経営者クラス" %>
+                                      <img width="150" height="100" src="/assets/president.jpg" alt="社長・経営者クラス" style="float: left;">
+                                      <h3 class="mt-20" style="float: flex;">社長・経営者クラス</h3>
+                                    
+                                    <% elsif article.situation == "役員クラス" %>
+                                      <img width="150" height="100" src="/assets/yakuinn.jpg" alt="役員クラス" style="float: left;">
+                                      <h3 class="mt-20" style="float: flex;">役員クラス</h3>
+                                      
+                                      
+                                    <% elsif article.situation == "部長クラス" %>
+                                      <img width="150" height="100" src="/assets/teamleader.jpg" alt="部長クラス" style="float: left;">
+                                      <h3 class="mt-20" style="float: flex;">部長クラス</h3>
+                                      
+                                    <% elsif article.situation == "役職クラス" %>
+                                      <img width="150" height="100" src="/assets/groupleader.jpg" alt="役職クラス" style="float: left;">
+                                      <h3 class="mt-20" style="float: flex;">役職クラス</h3>
+                                    
+                                    <% elsif article.situation == "担当レベル" %>
+                                      <img width="150" height="100" src="/assets/crient.jpg" alt="担当レベル" style="float: left;">
+                                      <h3 class="mt-20" style="float: flex;">担当レベル</h3>
+                                      
+                                    <% else %>
+                                      <img width="150" height="100" src="/assets/noimage.png" alt="その他" style="float: left;">
+                                      <h5 class="mt-20" style="float: flex">情報無し</h5> 
+                                    <% end %>
+                                  </div>
+                              </div>  
+                            </div>
                         </div>
-                    </div>
-                  </div>
+                      </div>
                 </div>
                 
                 <!-- 補足情報表示部分 -->
                 
-                <div class="rst-info row" style="margin-top: 20px;">
-                  <div class="col-sm-4">
-                    <p>ソフトドリンク：<%= article.softdrink %></p>
-                  </div>
-                  
-                  <div class="col-sm-4">
-                    <p>ビール銘柄：</p>　　　　<!--　後ほど追加する -->
-                  </div>
-                  
-                  <div class="col-sm-4">
-                    <p>タバコ：<%= article.smoking %></p>
-                  </div>
+                
+                <h3>◆補足情報◆</h3>
+                <div id="second-info">  
+                    <div class="rst-info row" style="margin-top: 20px;">
+                      <div class="col-sm-4">
+                        <p>ソフトドリンク：<%= article.softdrink %></p>
+                      </div>
+                      
+                      <div class="col-sm-4">
+                        <p>ビール銘柄：</p>　　　　<!--　後ほど追加する -->
+                      </div>
+                      
+                      <div class="col-sm-4">
+                        <p>タバコ：<%= article.smoking %></p>
+                      </div>
+                    </div>
+                    
+                    
+                    <div class="rst-info row">
+                      <div class="col-sm-4">
+                        <p>個室：<%= article.room_type %></p>
+                      </div>
+                      
+                      <div class="offset-sm-4 col-sm-4">
+                        <p>ネット予約：<%= article.net_reservation %></p>
+                      </div>
+                    </div>
                 </div>
-                
-                
-                <div class="rst-info row">
-                  <div class="col-sm-4">
-                    <p>個室：<%= article.room_type %></p>
-                  </div>
-                  
-                  <div class="offset-sm-4 col-sm-4">
-                    <p>ネット予約：<%= article.net_reservation %>分</p>
-                  </div>
+          
+          
+            <% if logged_in? %>
+              <div id="button-group" class="row">  
+                <div class="col-sm-6">                
+                  <% if current_user.favoriting?(article) %>
+                      <%= link_to "お気に入りを解除", like_path(article.id), method: :delete, class: 'btn btn-danger btn-sm' %>
+                  <% else %>
+                      <%= link_to "お気に入り登録する", likes_path(article_id: article.id), method: :post, class: 'btn btn-primary btn-sm' %>
+                  <% end %>
                 </div>
-                
-
-          <div class="row">
-            <div class="col-sm-4">
-              <%= link_to "投稿者", user_path %>
-            </div>
             
-
-            <div class="col-sm-4">
-              <% if current_user == article.user %>
-              <%= link_to "削除", article, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-            <% end %>
-            </div>
-          </div>
-          
-          
-          <% if logged_in? %>
-            <div class="row">  
-              <div class="col-sm-6">                
-                <% if current_user.favoriting?(article) %>
-                    <%= link_to "お気に入りを解除", like_path(article.id), method: :delete, class: 'btn btn-danger btn-sm' %>
-                <% else %>
-                    <%= link_to "お気に入り登録する", likes_path(article_id: article.id), method: :post, class: 'btn btn-primary btn-sm' %>
-                <% end %>
-              </div>
-          
-          <% else %>
-               <%= link_to "会員登録してお気に入り登録", signup_path, class: 'btn btn-primary btn-sm' %>
-          <% end %>    
-          
-              <div class="col-sm-6">
-                 <%= link_to "記事を編集する", edit_article_path(article), class: 'btn btn-primary btn-sm' %>
+            <% else %>
+                <div class="col-sm-6">
+                 <%= link_to "会員登録してお気に入り登録", signup_path, class: 'btn btn-primary btn-sm' %>
+                </div>
+            <% end %>    
+            
+                <div class="col-sm-6">
+                  <% if current_user == article.user %>
+                   <%= link_to "記事を編集する", edit_article_path(article), class: 'btn btn-primary btn-sm' %>
+                  <% end %>
+                </div>
+                
+              
               </div>
               
-            
-            </div>
+              
+              <div id="delete-button" class="row">
+                <div class="offset-sm-4 col-sm-4 offset-sm-4">
+                  <% if current_user == article.user %>
+                    <%= link_to "削除", article, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+                  <% end %>
+                </div>
+              </div>
         
       </div>
     </li>

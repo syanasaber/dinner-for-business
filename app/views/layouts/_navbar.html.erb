@@ -20,7 +20,7 @@
           
           <li class="list-unstyled" style="margin-right: 20px;"><%= link_to 'お店の検索', search_users_path, class: 'nav-link' %></li>
 
-          <li class="nav-item dropdown">
+          <li　id="user-info" class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right">
               <li class="dropdown-item"><%= link_to 'プロフィール編集', edit_user_path(current_user) %></li>

@@ -8,11 +8,14 @@
       <li class="media">
         <img class="mr-2 rounded" src="<%= gravatar_url(user, { size: 50 }) %>" alt="">
         <div class="media-body">
-          <div>
-            <p>ユーザー名：<%= user.name %></p>
-          </div>
-          <div>
-            <p><%= link_to 'ユーザーページへ', user_path(user), class: 'btn btn-primary btn-sm' %></p>
+          <div class="row">
+            <div class="col-sm-4">
+              <p style="margin-top: 10px;">ユーザー名：<%= user.name %></p>  
+            </div>
+          
+            <div class="col-sm-6">
+              <p><%= link_to 'ユーザーページへ', user_path(user), class: 'btn btn-primary btn-sm', style: 'margin-top: 7px;' %></p>
+            </div>
           </div>
         </div>
       </li>

@@ -1,19 +1,22 @@
 <div class="row">
         <aside class="col-sm-4">    
     
-            <h2>口コミの投稿</h2>
-            
-            <%= form_with(model: @review, local: true) do |f| %>
-               <%= render 'layouts/error_messages', model: f.object %>
-               
-            <%= hidden_field_tag :article_id, @article.id %>
-            <%= hidden_field_tag :user_id, @user.id %>
-               
-              <%= f.text_field :title, class: "text_field" %>
-       
-              <%= f.text_area :content, class: "text_area" %>
-              <%= f.submit '投稿', class: "submit-btn" %>
-            <% end %>
+            <h2 style="color:white">口コミの投稿</h2>
+                <% if logged_in? %>
+                    <%= form_with(model: @review, local: true) do |f| %>
+                       <%= render 'layouts/error_messages', model: f.object %>
+                       
+                    <%= hidden_field_tag :article_id, @article.id %>
+                    <%= hidden_field_tag :user_id, @user.id %>
+                      <p style="margin-top: 3px;">タイトル：</p>
+                      <%= f.text_field :title, class: "text_field form-control" %>
+                      <p style="margin-top: 3px;">コメント：</p>
+                      <%= f.text_area :content, class: "text-area form-control" %>
+                      <%= f.submit '投稿', class: "submit-btn", style: "margin-top: 10px" %>
+                    <% end %>
+                <% else %>
+                    <%= link_to "会員登録して口コミを投稿", signup_path, class: "btn btn-primary btn-sm", style: "margin-top: 15px" %>
+                <% end %>
         </aside>
 
 
@@ -25,15 +28,14 @@
                     <li class="nav-item"><a href="<%= reviewing_article_path %>" class="nav-link <%= 'active' if current_page?(reviewing_article_path) %>">口コミ<span class="badge badge-secondary"></span></a></li>
                 </ul>
             
-            <%= render 'articles/article_review', reviews: @reviews, article: @article %>
+            <%= render 'articles/article_review', reviews: @reviews, article: @article, user: @user %>
             
-            
-            
+ 
         
         </div>
         
         
-        <!--  パーシャル　引数は複数渡せる。 -->
+       <!--  パーシャル　引数は複数渡せる。 -->
 </div>
 
 

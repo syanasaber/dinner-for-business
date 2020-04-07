@@ -18,7 +18,7 @@
  
  
  body {
-     
+     color: lightgreen;
      margin: 0;
      padding: 0;
      background-color: #555555;
@@ -68,6 +68,11 @@
 
     position: relative;/*←絶対位置*/
     bottom: 0; /*下に固定*/
+}
+
+
+#user-info {
+ color: blue;
 }
 
 

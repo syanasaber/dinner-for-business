@@ -1,25 +1,28 @@
+
 <!-- js.erbファイルに書き込む場合は<script>いらない-->
 
+
+<% puts @value %>
 
 
   var array = <%= @value.to_s.html_safe %> ;
   
   
-  function create_line_select () {
+  function create_station_select () {
   
   for (var i = 0; i < array.length; i++) { 
-      var line = array[i];
-      var select = document.getElementById("lines");
+      var station = array[i];
+      var select = document.getElementById("stations");
       var option = document.createElement("option");
-      option.text = line;
-      option.value = line;
+      option.text = station;
+      option.value = station;
       select.appendChild(option);
         }
     }
     
     
     
-       create_line_select(array);
+       create_station_select(array);
     
     <!-- onclickに頼らず、js.erb内で一連の処理を描き切る -->
     <!-- 以下は実装案の仮コード-->
