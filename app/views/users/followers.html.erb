@@ -123,42 +123,43 @@
                                         
                                           <div class="sub-footer row">
                         
-                                            <div class="col-sm-3">
-                                              <% if art.room_type == "有(完全個室)" %>
-                                                <span class="badge badge-info">完全個室</span>
+                                              <div class="col-sm-3">
+                                                <% if art.room_type == "有(完全個室)" %>
+                                                  <h6 class="badge badge-info">完全個室</h6>
+                                                
+                                                <% elsif art.room_type == '有(簡易区切りのみ)' %>
+                                                    <h6 class="badge badge-info">簡易個室</h6>
+                                                <% end %>
+                                              </div>
                                               
-                                              <% elsif art.room_type == '有(簡易区切りのみ)' %>
-                                                  <span class="badge badge-info">簡易個室</span>
-                                              <% end %>
-                                            </div>
-                                            
-                                            
-                                            <div class="col-sm-3">
-                                              <% if art.smoking == "喫煙" %>
-                                                <span class="badge badge-info">喫煙</span>
                                               
-                                              <% elsif art.smoking == '禁煙' %>
-                                                  <span class="badge badge-info">禁煙</span>
-                                              <% end %>
-                                            </div>
-                                            
-                                            
-                                            <div class="col-sm-3">
-                                              <% if art.net_reservation == "可" %>
-                                                <span class="badge badge-info">ネット予約可</span>
-                                             
-                                              <% elsif art.net_reservation == "不可" %>
-                                                <span class="badge badge-info">電話予約のみ</span>
-                                              <% end %>
-                                            </div>
-                                  
-                                  
-                                            <div class="col-sm-3">
-                                                <%= link_to "詳細", article_path(art) , class: 'btn btn-primary btn-sm' %>
-                                            </div>
-                                            
-                                            
-                                        </div>
+                                              <div class="col-sm-3">
+                                                <% if art.smoking == "喫煙" %>
+                                                  <h6 class="badge badge-info">喫煙</h6>
+                                                
+                                                <% elsif art.smoking == '禁煙' %>
+                                                    <h6 class="badge badge-info">禁煙</h6>
+                                                <% end %>
+                                              </div>
+                                              
+                                              
+                                              <div class="col-sm-3">
+                                                <% if art.net_reservation == "可" %>
+                                                  <h6 class="badge badge-info">ネット予約可</h6>
+                                               
+                                                <% elsif art.net_reservation == "不可" %>
+                                                  <h6 class="badge badge-info">電話予約のみ</h6>
+                                                <% end %>
+                                              </div>
+                                          </div>
+                                          
+                                          
+                                          <div id="subfooter" class="sub-footer row">
+                                              <div class="offset-sm-3 col-sm-5">
+                                                  <%= link_to "詳細", article_path(art) , class: 'btn btn-primary btn-sm' %>
+                                              </div> 
+                                          </div>  
+                                        </div><!-- cardfooter ここまで-->
                                   </div>
                               </div>
                             </li>

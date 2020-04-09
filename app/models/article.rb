@@ -30,6 +30,14 @@ class Article < ApplicationRecord
         end
     end
     
+    def self.search_station(search_by_station)
+        if search_by_station
+          Article.where(['area LIKE? OR station LIKE?', "%#{search_by_station}%", "%#{search_by_station}%"])
+        else
+          Article.none
+        end
+    end
+    
     
     private
         def form_blank?

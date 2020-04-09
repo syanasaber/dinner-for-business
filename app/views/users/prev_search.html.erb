@@ -17,7 +17,7 @@
     
     <div id="search-zone">
             <h4>お店の検索</h4>
-            <%= form_with url: search_users_path, method: :get, local: true do |f| %>
+            <%= form_with url: prev_search_users_path, method: :get, local: true do |f| %>
               <p>■エリア、駅名、店名で検索</p>
               <%= f.text_field :search %>
               

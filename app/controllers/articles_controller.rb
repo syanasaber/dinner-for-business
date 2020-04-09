@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build(article_params)
     if @article.save
       flash[:success] = '記事を投稿しました。'
-      redirect_to user_path(current_user)
+      redirect_to article_url(@article)
     else
       flash.now[:danger] = '記事が投稿できませんでした。'
       render :new
@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
 
       if @article.update(article_params)
         flash[:success] = '記事を編集しました。'
-        render :edit
+        redirect_to article_url
       else
         flash.now[:danger] = '記事を編集できませんでした。'
         render :edit

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show, :edit, :update, :destroy, :prev_search]
   before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :likes, :writing, :myarea_list]
   before_action :set_search, only: [:show, :followings, :followers, :likes, :search, :writing, :myarea_list, :prev_search]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
@@ -79,6 +80,14 @@ class UsersController < ApplicationController
   def prev_search
   end
   
+  def search_by_station
+    @user = User.find(params[:user_id])
+    @articles = @user.feed_articles.order(id: :desc).page(params[:page]).per(4)
+    @search_articles = Article.search_station(params[:search_by_station]).order(id: :desc).page(params[:page])
+    render 'show'
+  end
+  
+  
   #prevsearchは
   
   #ログインユーザーが登録したマイエリア情報にマッチする記事だけを取得するコード
@@ -94,22 +103,22 @@ class UsersController < ApplicationController
     @myarea_articles = [];
     
 
-    if (current_user.my_area1 != "")
-      @myarea_articles += Article.where(['area LIKE? OR station LIKE?', "%#{current_user.my_area1}%", "%#{current_user.my_area1}%"]).order(id: :desc).page(params[:page])
+    if (@user.my_area1 != "")
+      @myarea_articles += Article.where(['area LIKE? OR station LIKE?', "%#{@user.my_area1}%", "%#{@user.my_area1}%"]).order(id: :desc).page(params[:page])
     else
       Article.none
     end
     
     
-    if (current_user.my_area2 != "")
-      @myarea_articles += Article.where(['area LIKE? OR station LIKE?', "%#{current_user.my_area2}%", "%#{current_user.my_area2}%"]).order(id: :desc).page(params[:page])
+    if (@user.my_area2 != "")
+      @myarea_articles += Article.where(['area LIKE? OR station LIKE?', "%#{@user.my_area2}%", "%#{@user.my_area2}%"]).order(id: :desc).page(params[:page])
     else
       Article.none
     end
     
       
-    if (current_user.my_area3 != "")
-      @myarea_articles += Article.where(['area LIKE? OR station LIKE?', "%#{current_user.my_area3}%", "%#{current_user.my_area3}%"]).order(id: :desc).page(params[:page])
+    if (@user.my_area3 != "")
+      @myarea_articles += Article.where(['area LIKE? OR station LIKE?', "%#{@user.my_area3}%", "%#{@user.my_area3}%"]).order(id: :desc).page(params[:page])
     else
       Article.none
     end  
@@ -117,6 +126,54 @@ class UsersController < ApplicationController
     @search_results = Kaminari.paginate_array(@myarea_articles).page(params[:page]).per(4)
     
   end
+  
+  
+  def change
+    
+    @pref = params[:prefecture]
+    @lines =  "http://express.heartrails.com/api/json?method=getLines&prefecture="
+    
+    @url = URI.encode @lines.concat(@pref)
+    
+    @json_url = open(@url).read
+    @hash = JSON.parse(@json_url)
+    
+    
+    @hash.each do |key, value|
+        value.each do |key2, value2|
+          @value = value2
+        end
+    end
+    
+    render 'change.js.erb'
+  end
+  
+  
+  def create_station
+    @value = []
+    
+    @line = params[:lines]
+    @stations =  "http://express.heartrails.com/api/json?method=getStations&line="
+    
+    @url = URI.encode @stations.concat(@line)
+    
+    @json_url = open(@url).read
+    @hash = JSON.parse(@json_url)
+    
+    
+    @hash.each do |key, value|
+        value.each do |key2, value2|
+          value2.each do |value3|
+            value4 = value3["name"]
+              @value.push(value4)
+          end
+        end
+    end
+    
+    render 'create_station.js.erb'
+  end
+  
+  
   
   
   
@@ -134,6 +191,12 @@ class UsersController < ApplicationController
     @search_articles = Article.search(params[:search]).order(id: :desc).page(params[:page])
   end
   
+  def correct_user
+    @user = User.find(params[:id])
+    unless current_user == @user
+      redirect_to root_url 
+    end
+  end
   
 end
 

@@ -3,8 +3,9 @@ Rails.application.routes.draw do
     
     get 'navigation', to: 'toppages#navigation'
     get 'selectpage', to: 'toppages#selectpage'
-    post 'change', to: 'toppages#change'
-    post 'change_station', to: 'toppages#change_station'
+    post 'change', to: 'users#change'
+    post 'create_station', to: 'users#create_station'
+    get 'search_by_station', to: 'users#search_by_station'
     
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
             get :search
             get :user_search
             get :prev_search
+            get :search_by_station
         end
     end
     
