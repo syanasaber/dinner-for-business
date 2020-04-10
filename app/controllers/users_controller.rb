@@ -2,9 +2,11 @@ class UsersController < ApplicationController
   #事前処理でアクション実行者が、ログインユーザーかおづかを判断。
   
   before_action :require_user_logged_in, only: [:index, :show, :edit, :update, :destroy, :prev_search]
-  before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :likes, :writing, :myarea_list]
+  before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :likes, :writing, :myarea_list, ]
   before_action :set_search, only: [:show, :followings, :followers, :likes, :search, :writing, :myarea_list, :prev_search]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_search_by_station,  only: [:search_by_station, :search_by_station_of_show, :search_by_station_of_myarea, :search_by_station_of_writing,
+                                                :search_by_station_of_followers, :search_by_station_of_followings, :search_by_station_of_likes]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
@@ -80,13 +82,7 @@ class UsersController < ApplicationController
   def prev_search
   end
   
-  def search_by_station
-    @user = User.find(params[:user_id])
-    @articles = @user.feed_articles.order(id: :desc).page(params[:page]).per(4)
-    @search_articles = Article.search_station(params[:search_by_station]).order(id: :desc).page(params[:page])
-    render 'show'
-  end
-  
+
   
   #prevsearchは
   
@@ -99,7 +95,6 @@ class UsersController < ApplicationController
   #フォームに何も入れてないのに、nil判定がfalse、""判定にしたら上手くいった。
   
   def myarea_list
-    
     @myarea_articles = [];
     
 
@@ -174,6 +169,70 @@ class UsersController < ApplicationController
   end
   
   
+    
+  #-------------------------------------駅名選択で検索ゾーン--------------------------------------------------
+  
+  def search_by_station
+    render 'search'
+  end
+  
+  def search_by_station_of_show
+    render 'show'
+  end
+  
+  
+  
+  def search_by_station_of_myarea
+    @myarea_articles = [];
+    
+
+    if (@user.my_area1 != "")
+      @myarea_articles += Article.where(['area LIKE? OR station LIKE?', "%#{@user.my_area1}%", "%#{@user.my_area1}%"]).order(id: :desc).page(params[:page])
+    else
+      Article.none
+    end
+    
+    
+    if (@user.my_area2 != "")
+      @myarea_articles += Article.where(['area LIKE? OR station LIKE?', "%#{@user.my_area2}%", "%#{@user.my_area2}%"]).order(id: :desc).page(params[:page])
+    else
+      Article.none
+    end
+    
+      
+    if (@user.my_area3 != "")
+      @myarea_articles += Article.where(['area LIKE? OR station LIKE?', "%#{@user.my_area3}%", "%#{@user.my_area3}%"]).order(id: :desc).page(params[:page])
+    else
+      Article.none
+    end  
+    
+    @search_results = Kaminari.paginate_array(@myarea_articles).page(params[:page]).per(4)
+    
+    render 'myarea_list'
+  end
+  
+  
+  def search_by_station_of_writing
+    @articles = @user.articles.order(id: :desc).page(params[:page]).per(4)
+    render 'writing'
+  end
+  
+  def search_by_station_of_followers
+    @followers = @user.followers.page(params[:page])
+    counts(@user)
+    render 'followers'
+  end
+  
+  def search_by_station_of_followings
+    @followings = @user.followings.page(params[:page])
+    counts(@user)
+    render 'followings'
+  end
+  
+  def search_by_station_of_likes
+    @favorites = @user.favorites.page(params[:page]).per(4)
+    render 'likes'
+  end
   
   
   
@@ -185,6 +244,11 @@ class UsersController < ApplicationController
   
   def set_user
     @user = User.find(params[:id])
+  end
+  
+  def set_search_by_station
+    @user = User.find(params[:user_id])
+    @search_articles = Article.search_station(params[:search_by_station]).order(id: :desc).page(params[:page])
   end
   
   def set_search

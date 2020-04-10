@@ -6,6 +6,13 @@ Rails.application.routes.draw do
     post 'change', to: 'users#change'
     post 'create_station', to: 'users#create_station'
     get 'search_by_station', to: 'users#search_by_station'
+    get 'search_by_station_of_show', to: 'users#search_by_station_of_show'
+    get 'search_by_station_of_myarea', to: 'users#search_by_station_of_myarea'
+    get 'search_by_station_of_writing', to: 'users#search_by_station_of_writing'
+    get 'search_by_station_of_followers', to: 'users#search_by_station_of_followers'
+    get 'search_by_station_of_followings', to: 'users#search_by_station_of_followings'
+    get 'search_by_station_of_likes', to: 'users#search_by_station_of_likes'
+    
     
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
@@ -28,7 +35,6 @@ Rails.application.routes.draw do
             get :search
             get :user_search
             get :prev_search
-            get :search_by_station
         end
     end
     
