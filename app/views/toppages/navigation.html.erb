@@ -4,39 +4,74 @@
 
 <h3>当アプリの使い方</h3>
 
-
-<%= form_with(url: "/change" ) do |f| %>
-<%= f.label :都道府県, '都道府県' %>
-  <%= f.select :prefecture, [['兵庫県', '兵庫県'], ['大阪府', '大阪府'],['京都府', '京都府']] %>
-  <%= f.submit %>
-<% end %>
-
-
-
-<form action="/change_station" accept-charset="UTF-8" data-remote="true" method="post">
-  <input name="utf8" type="hidden" value="✓">
-  <input type="hidden" name="authenticity_token">
-  <label for="路線">路線</label>
-  <select id="lines" name="lines">
+<div id="info-wrapper">
+  <div class="content-1" style="margin-top:50px;">
+    <h3>１．どなたでも自由に当サイトの飲食店データベースの閲覧が可能です！</h3>
+    <!-- ここにメインヘッダー-->
+      <div class="content-1-picture">
+        <img src="">
+      </div>
+        <div class="clearfix">
+          <img width="550" height="550" src="/assets/search-sample.png" class="float-sm-left">
+          <br>
+          <p>ご利用いただける機能</p>
+            <br>
+              <li>お店の検索（フリーワード、駅名から）</li>
+              <br>
+              <li>お店詳細ページ、口コミの閲覧</li>
+              <br>
+              <li>ユーザー検索</li>
+          <br>
+          <h5>※そのほかの機能は会員登録が必要です。</h5>
+      </div>
+    
+  </div>
   
-  </select>
-  <input type="submit" name="commit" value="検索" data-disable-with="検索">
-</form>
-
-<form action="/change_station" accept-charset="UTF-8" data-remote="true" method="post">
-  <input name="utf8" type="hidden" value="✓">
-  <input type="hidden" name="authenticity_token">
-  <label for="駅名">駅名</label>
-  <select id="stations" name="stations">
+  <div class="content-2" style="margin-top:120px;">
+    <h3>２．会員登録をしてユーザーそれぞれのオリジナルお店リストを構築しましょう！！</h3>
+    <!-- ここにメインヘッダー-->
+    <div class="content-1-picture">
+        <img src="">
+      </div>
+      
+      <div class="clearfix">
+        <img width="450" height="450" src="/assets/timeline-sample.png" class="float-sm-left">
+        <br>
+        <h4>フォローユーザー新着投稿を集めてタイムラインに。</h4>
+        <br>
+        <p>あなたがフォローしたユーザーが投稿した記事は、<br>
+            TOPタブにて新着順に一覧表示致します。</p>
+      </div>
+      
+      <div id="annouce-mylist" class="clearfix">
+        <img width="450" height="450" src="/assets/mylist-sample" class="float-sm-left">
+        <br>
+        <h4>あなたのよく利用するエリアにマッチする店を自動リスト化。</h4>
+        <br>
+        <p>ユーザー情報として、よく利用するエリアを「マイエリア１～３」に登録しましょう！<br>
+           そのエリアにマッチするお店記事を自動的に検索→取得して、あなたのマイエリアページに表示致します。
+        </p>
+      </div>
+      
+      <div class="login-page" style="margin-top:50px;">
+        <h4>※もちろんおなじみのお気に入り機能・お気に入りリストもご活用いただけます！！</h4>
+      </div>
+  </div>
   
-  </select>
-  <input type="submit" name="commit" value="検索" data-disable-with="検索">
-</form>
+  
+  <div class="login-page" style="margin-top:80px;">
+    <h3>既に会員登録済みの方</h3>
+    <%= link_to 'ログインページへ', login_path, class: 'btn btn-primary btn-sm' %>
+  </div>
 
 
-
-
-
+  <div class="signup-page">
+      <h3>会員登録されていない方</h3>
+      <%= link_to '会員登録ページへ', signup_path, class: 'btn btn-primary btn-sm' %>
+  </div>
+  
+  
+</div>
 
 
  

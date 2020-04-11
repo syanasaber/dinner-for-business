@@ -28,7 +28,7 @@
                     <li class="nav-item"><a href="<%= reviewing_article_path %>" class="nav-link <%= 'active' if current_page?(reviewing_article_path) %>">口コミ<span class="badge badge-secondary"></span></a></li>
                 </ul>
             
-            <%= render 'articles/article_review', reviews: @reviews, article: @article, user: @user %>
+            <%= render 'articles/article_review', reviews: @reviews, article: @article %>
             
  
         

@@ -10,22 +10,9 @@
     
     
             <div class="search_by_station">
-              <%= form_with(url: "/change" ) do |f| %>
-                  <%= f.label :都道府県, '都道府県' %>
-                  <%= f.select :prefecture, [['兵庫県', '兵庫県'], ['大阪府', '大阪府'],['京都府', '京都府']] %>
-                  <%= f.submit %>
-              <% end %>
+              <p>■駅名選択で検索</p>
+                <%= render 'users/search_by_station' %>
             
-              <form action="/create_station" accept-charset="UTF-8" data-remote="true" method="post">
-                <input name="utf8" type="hidden" value="✓">
-                <input type="hidden" name="authenticity_token">
-                <label for="路線">路線</label>
-                <select id="lines" name="lines">
-                
-                </select>
-                <input type="submit" name="commit" value="検索" data-disable-with="検索">
-              </form>
-              
               <form action="/search_by_station" accept-charset="UTF-8" method="get">
                 <input name="utf8" type="hidden" value="✓">
                 <label for="駅名">駅名</label>
