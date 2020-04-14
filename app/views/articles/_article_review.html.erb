@@ -15,20 +15,18 @@
                                     <h5><%= review.content %></h5>
                                     
                                     <p>
-                                        <% if current_user == review.user %>
-                                            <%= form_with(model: review, local: true, method: :delete) do |f| %>
-                                                <%= render 'layouts/error_messages', model: f.object %>
-                                                    
-                                                  <%= hidden_field_tag :article_id, article.id %>
-                                                  <%= f.submit '投稿を削除', class: "submit-btn" %>
+                                        <% if logged_in? %>    
+                                            <% if current_user == review.user %>
+                                                <%= form_with(model: review, local: true, method: :delete) do |f| %>
+                                                    <%= render 'layouts/error_messages', model: f.object %>
+                                                        
+                                                      <%= hidden_field_tag :article_id, article.id %>
+                                                      <%= f.submit '投稿を削除', class: "submit-btn" %>
+                                                <% end %>
                                             <% end %>
-                                        <% end %>
+                                        <% end %>    
                                     </p>
-                                    
-                                    <p>
-                                        投稿者：<%= review.user_id %>
-                                    </p>
-                                    
+                
                                 </div>
                             </div>     
                     </div>    

@@ -7,7 +7,7 @@
                         <%= render 'layouts/error_messages', model: f.object %>
                             
                       <%= hidden_field_tag :article_id, @article.id %>
-                      <%= hidden_field_tag :user_id, @user.id %>
+                      <%= hidden_field_tag :user_id, current_user.id %>
                       <p class="rev-form">タイトル：</p>
                       <%= f.text_field :title, class: "text_field form-control", style: "margin-top: 0px" %>
                       <p class="rev-form">コメント：</p>

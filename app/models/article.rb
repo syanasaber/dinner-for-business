@@ -10,6 +10,7 @@ class Article < ApplicationRecord
     validates :shop_url, uniqueness: { case_sensitive: false }, if: :form_blank?
     validates :address, uniqueness: { case_sensitive: false }, if: :form_blank?
     validates :area, presence: true, length: { maximum: 50 }, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/ }
+    validates :station, presence: true, length: { maximum: 50 }, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/ }
     #エリアカラムについては、アルファベット表記を禁止
   
     

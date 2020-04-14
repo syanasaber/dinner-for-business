@@ -21,15 +21,15 @@
                     <h5 class="card-title">
                       
                       <div class="rst-info row">
-                        <div class="col-sm-4">
+                        <div class="col-lg-4">
                           <p>店名：<%= article.shop_name %></p>
                         </div>
                         
-                        <div class="col-sm-4">
+                        <div class="col-lg-4">
                           <p>エリア：<%= article.area %></p>
                         </div>
                         
-                        <div class="col-sm-4">
+                        <div class="col-lg-4">
                           <p>最寄駅：<%= article.station %></p>
                         </div>
                       </div>
@@ -38,7 +38,7 @@
                   
                 <div class="card-body">
                   <div class="rst-topics row">
-                    <aside class="col-sm-4">
+                    <aside class="col-lg-4">
                       <div class="rst-imaage">
                           <div class="rst-main_visual">
                               <%= image_tag article.image1.url if article.image1? %>
@@ -48,7 +48,7 @@
                   
                   
           
-                    <div id="sub-info" class="col-sm-8">
+                    <div id="sub-info" class="col-lg-8">
                        <p class="text-left">予算：<%= article.budget %>円</p>
                   
                        <p class="text-left">雰囲気：<%= article.situation %></p>
@@ -65,7 +65,7 @@
                 <div class="card-footer">
                 
                   <div class="sub-footer row">
-                    <div class="col-sm-3">
+                    <div class="col-lg-3">
                       <% if current_user == article.user %>
                         <%= link_to "削除", article, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
                       <% end %>
@@ -73,7 +73,7 @@
                   
                     
                     
-                    <div class="col-sm-2">
+                    <div class="col-lg-2">
                       <% if article.room_type == "有(完全個室)" %>
                         <span class="badge badge-info">完全個室</span>
                       
@@ -83,7 +83,7 @@
                     </div>
                     
                     
-                    <div class="col-sm-2">
+                    <div class="col-lg-2">
                       <% if article.smoking == "喫煙" %>
                         <span class="badge badge-info">喫煙</span>
                       
@@ -93,7 +93,7 @@
                     </div>
                     
                     
-                    <div class="col-sm-2">
+                    <div class="col-lg-2">
                       <% if article.net_reservation == "可" %>
                         <span class="badge badge-info">ネット予約可</span>
                      
@@ -103,10 +103,10 @@
                     </div>
           
           
-                    <div class="col-sm-3">
+                    <div class="col-lg-3">
                         <%= link_to "詳細", article , class: 'btn btn-primary btn-sm' %>
                     </div>
-                    
+                  </div>  
                     
                 </div>
           </div>

@@ -21,7 +21,12 @@
 
       <%= f.submit 'ログイン', class: 'btn btn-primary btn-block' %>
     <% end %>
-
-    <p>New user? <%= link_to 'Sign up now!', signup_path %></p>
+    
+    <div class="signup-page" style="margin-top:50px;">
+      <h4>会員登録されていない方</h4>
+      <%= link_to '会員登録ページへ', signup_path, class: 'btn btn-primary btn-sm' %>
+    </div>
   </div>
+
 </div>
+

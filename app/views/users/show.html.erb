@@ -4,11 +4,8 @@
 <!-- 基本構造の参照は、micropostsのshowぺーじにて -->
 
 
-
-
-
 <div class="row">
-    <aside class="col-sm-4">
+    <aside class="col-lg-4">
         
         <!-- プロフィール表示ゾーン -->
         <div class="card">
@@ -58,24 +55,35 @@
               <div id="art-search" class="card-header">
                   <h4 class="card-title">
                       <%= form_with url: @user, method: :get, local: true do |f| %>
-                            <p>■エリア、駅名、店名</p>
-                            <%= f.text_field :search %>
+                        <div class="form-group row">
+                         <div class="col-lg-8">
+                           <p>■エリア、駅名、店名</p>
+                         </div>
+                        </div>   
+                        <div class="form-group row">   
+                              <%= f.text_field :search, class: 'col-lg-8' %>
+                        </div>
+                            
                 
                             <%= f.submit :検索 %>
                       <% end %>
                       
+                      <!-- 駅名選択で検索 -->
                       <div class="search_by_station">
                         <%= render 'users/search_by_station' %>
                         
-                        <form action="/search_by_station_of_show" accept-charset="UTF-8" method="get">
-                          <input name="utf8" type="hidden" value="✓">
-                          <input type="hidden" name="user_id" id="user_id" value="<%= @user.id %>">
-                          <label for="駅名">駅名</label>
-                            <select id="search_by_station" name="search_by_station">
-                            
-                            </select>
-                          <input type="submit" name="commit" value="検索" data-disable-with="検索">
-                        </form>
+                          <form action="/search_by_station_of_show" accept-charset="UTF-8" method="get">
+                            <input name="utf8" type="hidden" value="✓">
+                            <input type="hidden" name="user_id" id="user_id" value="<%= @user.id %>">
+                        
+                                  <label for="駅名">駅名</label>
+                               
+                                  <select id="search_by_station" name="search_by_station">
+                                  </select>
+                                
+                                  
+                            <input type="submit" name="commit" value="検索" data-disable-with="検索">
+                          </form>
                       </div>   
                       
                   </h4>
@@ -96,15 +104,15 @@
                                             <h6 class="card-title">
                                               
                                               <div class="rst-info row">
-                                                <div class="col-sm-4">
+                                                <div class="col-lg-4">
                                                   <p>店名：<%= art.shop_name %></p>
                                                 </div>
                                                 
-                                                <div class="col-sm-4">
+                                                <div class="col-lg-4">
                                                   <p>エリア：<%= art.area %></p>
                                                 </div>
                                                 
-                                                <div class="col-sm-4">
+                                                <div class="col-lg-4">
                                                   <p>最寄駅：<%= art.station %></p>
                                                 </div>
                                               </div>
@@ -113,7 +121,7 @@
                                           
                                         <div class="card-body">
                                           <div class="rst-topics row">
-                                              <div class="col-sm-6">
+                                              <div class="col-lg-4">
                                                   <div class="rst-image">
                                                       <div id="rst-main_visual">
                                                           <%= image_tag art.image1.url if art.image1? %>
@@ -123,7 +131,7 @@
                                             
                                             
                                     
-                                              <div id="sub-info" class="col-sm-6">
+                                              <div id="sub-info" class="col-lg-6">
                                                  <p class="text-left">予算：<%= art.budget %>円</p>
                                             
                                                  <p class="text-left">雰囲気：<%= art.situation %></p>
@@ -141,17 +149,17 @@
                                         
                                           <div class="sub-footer row">
                         
-                                              <div class="col-sm-3">
+                                              <div class="col-lg-3">
                                                 <% if art.room_type == "有(完全個室)" %>
                                                   <h6 class="badge badge-info">完全個室</h6>
                                                 
-                                                <% elsif art.room_type == '有(簡易区切り���み)' %>
+                                                <% elsif art.room_type == '有(簡易区切りのみ)' %>
                                                     <h6 class="badge badge-info">簡易個室</h6>
                                                 <% end %>
                                               </div>
                                               
                                               
-                                              <div class="col-sm-3">
+                                              <div class="col-lg-3">
                                                 <% if art.smoking == "喫煙" %>
                                                   <h6 class="badge badge-info">喫煙</h6>
                                                 
@@ -161,7 +169,7 @@
                                               </div>
                                               
                                               
-                                              <div class="col-sm-3">
+                                              <div class="col-lg-3">
                                                 <% if art.net_reservation == "可" %>
                                                   <h6 class="badge badge-info">ネット予約可</h6>
                                                
@@ -173,7 +181,7 @@
                                           
                                           
                                           <div id="subfooter" class="sub-footer row">
-                                              <div class="offset-sm-3 col-sm-5">
+                                              <div class="col-lg-9">
                                                   <%= link_to "詳細", article_path(art) , class: 'btn btn-primary btn-sm' %>
                                               </div> 
                                           </div>  
@@ -182,7 +190,7 @@
                               </div>
                             </li>
                           <% end %>
-                        
+                      
                         </ul>
                     </div> <!-- search-resultここまで-->
             </div> <!-- cardbodyここまで-->
@@ -195,20 +203,20 @@
     </aside>
     
     <!-- タブ表示するコード-->
-    <div id="user-nav" class="col-sm-8">
+    <div id="user-nav" class="col-lg-8">
         <ul class="nav nav-tabs nav-justified mb-3">
             <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">
-                TOP<span class="badge badge-secondary"><%= @count_articles %></span></a></li>
+                TOP</a></li>
             
             <li class="nav-item"><a href="<%= myarea_list_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(myarea_list_user_path(@user)) %>">マイエリア<span class="badge badge-secondary"></span></a></li>
             
              <li class="nav-item"><a href="<%= writing_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(writing_user_path(@user)) %>">投稿一覧<span class="badge badge-secondary"></span></a></li>
             
             <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">
-                フォロー<span class="badge badge-secondary"><%= @count_followings %></span></a></li>
+                フォロー</a></li>
             
             <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">
-                フォロワー<span class="badge badge-secondary"><%= @count_followers %></span></a></li>
+                フォロワー</a></li>
             
             <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入り記事<span class="badge badge-secondary"></span></a></li>
         </ul>

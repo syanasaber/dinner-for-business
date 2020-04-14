@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   #事前処理でアクション実行者が、ログインユーザーかおづかを判断。
   
-  before_action :require_user_logged_in, only: [:index, :show, :edit, :update, :destroy, :prev_search]
-  before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :likes, :writing, :myarea_list, ]
+  before_action :require_user_logged_in, only: [:show, :followings, :followers, :likes, :writing, :myarea_list, 
+  :edit, :update, :destroy, :prev_search]
+  before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :likes, :writing, :myarea_list]
   before_action :set_search, only: [:show, :followings, :followers, :likes, :search, :writing, :myarea_list, :prev_search]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :set_search_by_station,  only: [:search_by_station, :search_by_station_of_show, :search_by_station_of_myarea, :search_by_station_of_writing,
@@ -123,6 +124,7 @@ class UsersController < ApplicationController
   end
   
   
+  
   def change
     
     @pref = params[:prefecture]
@@ -177,6 +179,7 @@ class UsersController < ApplicationController
   end
   
   def search_by_station_of_show
+    @articles = @user.feed_articles.order(id: :desc).page(params[:page]).per(4)
     render 'show'
   end
   

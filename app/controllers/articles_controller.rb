@@ -50,7 +50,6 @@ class ArticlesController < ApplicationController
   def reviewing
      @article = Article.find(params[:id])
      @review = Review.new
-     @user = current_user
      @reviews = @article.reviews
   end
   
@@ -61,7 +60,7 @@ class ArticlesController < ApplicationController
   
   def article_params
     params.require(:article).permit(:shop_name, :shop_url, :address, :image1, :image2, :image3, :image4, :image5, :image6, :area, :station, :walk_time,
-        :main, :alcohol_type, :food_type, :budget, :situation, :softdrink, :room_type, :smoking, :net_reservation, :review)
+        :main, :alcohol_type, :food_type, :budget, :situation, :softdrink, :beer_brand, :room_type, :smoking, :net_reservation, :review)
   end
   
   

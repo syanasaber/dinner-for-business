@@ -15,36 +15,42 @@
                   
                   
                 <h3>◆基本情報◆</h3>  
-                <div id="basic-info">
+                <div id="basic-info"  style="margin-top: 0px;">
                     <div class="rst-info row">
-                      <div class="col-sm-4">
+                      <div class="col-lg-4">
                         <p>店名：<%= article.shop_name %></p>
                       </div>
                       
-                      <div class="offset-sm-1 col-sm-3">
+                      <div class="offset-lg-1 col-lg-3">
                         <p>エリア：<%= article.area %></p>
                       </div>
                       
-                      <div class="col-sm-3">
+                      <div class="col-lg-3">
                         <p>最寄駅：<%= article.station %></p>
                       </div>
                     </div>
                     
                     
                     <div class="rst-info row">
-                      <div class="col-sm-4">
+                      <div class="col-lg-4">
                         <p>サイト：<%= article.shop_url %></p>
                       </div>
                       
                       
-                      <div class="offset-sm-4 col-sm-3">
+                      <div class="offset-lg-4 col-lg-3">
                         <p>アクセス：徒歩<%= article.walk_time %>分</p>
                       </div>
                     </div>
                     
                     <div class="rst-info row">
-                      <div class="col-sm-4">
-                        <p>予算：約<%= article.budget %>円</p>
+                      <div class="col-lg-4">
+                        <p>予算(１人あたり）：約<%= article.budget %>円</p>
+                      </div>
+                    </div>
+                    
+                    <div class="rst-info row">
+                      <div class="col-lg-4">
+                        <p>住所：<%= article.address %></p>
                       </div>
                     </div>
                 </div>  
@@ -175,7 +181,7 @@
             <!-- ここからラッパー-->
                 <div class="rst-info-wrapper">
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-lg-6", style="margin-top: 20px;">
                         <div class="card">
                           <div class="card-header">
                               <h3 class="card-title">
@@ -186,37 +192,85 @@
                           <div class="card-body">
                               <div class="image-picture">
                                 <% if article.alcohol_type == "ビール" %>
-                                  <img width="100" height="100" src="/assets/beer.jpg" alt="ビール" style="float: left;">
-                                  <h5 class="mt-20" style="float: flex">ビール</h5>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="150" height="100" src="/assets/beer.jpg" alt="ビール">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <h5 class="mt-20">ビール</h5>
+                                  </div>
+                                </div>
                                 
                                 <% elsif article.alcohol_type == "カクテル" %>
-                                  <img width="100" height="100" src="/assets/caktel.jpg" alt="カクテル" style="float: left;">
-                                  <p class="mt-20" style="float: flex">カクテル</p>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="150" height="100" src="/assets/caktel.jpg" alt="カクテル">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <p class="mt-20">カクテル</p>
+                                  </div>
+                                </div>
                                   
                                   
                                 <% elsif article.alcohol_type == "ワイン" %>
-                                  <img width="100" height="100" src="/assets/wine.jpg" alt="ワイン" style="float: left;">
-                                  <h5 style="float: flex">ワイン</h5>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="150" height="100" src="/assets/wine.jpg" alt="ワイン">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <h5 class="mt-20">ワイン</h5>
+                                  </div>
+                                </div>
                                   
                                 <% elsif article.alcohol_type == "日本酒" %>
-                                  <img width="100" height="100" src="/assets/japanese.jpg" alt="日本酒" style="float: left;">
-                                  <h5 class="mt-20" style="float: flex">日本酒</h5>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="150" height="100" src="/assets/japanese.jpg" alt="日本酒">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <h5 class="mt-20">日本酒</h5>
+                                  </div>
+                                </div>
                                 
                                 <% elsif article.alcohol_type == "焼酎" %>
-                                  <img width="100" height="100" src="/assets/syo-tyu.jpg" alt="焼酎" style="float: left;">
-                                  <h5 class="mt-20" style="float: flex">焼酎</h5>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="150" height="100" src="/assets/syo-tyu.jpg" alt="焼酎">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <h5 class="mt-20">焼酎</h5>
+                                  </div>
+                                </div>
                                   
                                 <% elsif article.alcohol_type == "ウイスキー" %>
-                                  <img width="100" height="100" src="/assets/wisky.jpg" alt="ウイスキー" style="float: left;">
-                                  <p class="mt-20" style="float: flex">ウイスキー</p>
+                                <div class="row">
+                                  <div class="col-lg-6">
+                                    <img width="120" height="100" src="/assets/wisky.jpg" alt="ウイスキー">
+                                  </div>
+                                  <div class="col-lg-6">
+                                    <p class="mt-20">ウイスキー</p>
+                                  </div>
+                                </div>
                                 
                                 <% elsif article.alcohol_type == "その他" %>
-                                  <img width="100" height="100" src="/assets/main-visual.jpg" alt="その他" style="float: left;">
-                                  <h5 class="mt-20" style="float: flex">その他</h5>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="150" height="100" src="/assets/main-visual.jpg" alt="その他">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <h5 class="mt-20">その他</h5>
+                                  </div>
+                                </div>
                                   
                                 <% else %>
-                                  <img width="100" height="100" src="/assets/noimage.png" alt="その他" style="float: left;">
-                                  <h5 class="mt-20" style="float: flex">情報無し</h5>
+                                <div class="row">
+                                  <div class="col-lg-5">
+                                    <img width="100" height="100" src="/assets/noimage.png" alt="その他">
+                                  </div>
+                                  <div class="col-lg-7">
+                                    <h5 class="mt-20">情報無し</h5>
+                                  </div>
+                                </div>
                                 <% end %>
                                 
                               </div>
@@ -226,7 +280,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-sm-6">
+                    <div class="col-lg-6", style="margin-top: 20px;">
                         <div class="card">
                           <div class="card-header">
                               <h3 class="card-title">
@@ -237,32 +291,74 @@
                           <div class="card-body">
                               <div class="image-picture">
                                 <% if article.food_type == "お肉" %>
-                                  <img width="100" height="100" src="/assets/meats.jpg" alt="お肉" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">お肉</h3>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="150" height="100" src="/assets/meats.jpg" alt="お肉">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <h3 class="mt-20">お肉</h3>
+                                  </div>
+                                </div>
                                 
                                 <% elsif article.food_type == "魚系" %>
-                                  <img width="100" height="100" src="/assets/fish.jpg" alt="お魚" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">お魚</h3>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="150" height="100" src="/assets/fish.jpg" alt="お魚">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <h3 class="mt-20">お魚</h3>
+                                  </div>
+                                </div>
                                   
                                   
                                 <% elsif article.food_type == "和食" %>
-                                  <img width="100" height="100" src="/assets/japanfood.jpg" alt="和食" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">和食</h3>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="150" height="100" src="/assets/japanfood.jpg" alt="和食">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <h3 class="mt-20">和食</h3>
+                                  </div>
+                                </div>
                                   
                                 <% elsif article.food_type == "イタリアン" %>
-                                  <img width="100" height="100" src="/assets/italian.jpg" alt="イタリアン" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">イタリアン</h3>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="150" height="100" src="/assets/italian.jpg" alt="イタリアン">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <p class="mt-20">イタリアン</p>
+                                  </div>
+                                </div>
                                 
                                 <% elsif article.food_type == "フレンチ" %>
-                                  <img width="100" height="100" src="/assets/french.jpg" alt="フレンチ" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">フレンチ</h3>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="150" height="100" src="/assets/french.jpg" alt="フレンチ">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <p class="mt-20">フレンチ</p>
+                                  </div>
+                                </div>
                                   
                                 <% elsif article.food_type == "その他" %>
-                                  <img width="100" height="100" src="/assets/wisky.jpg" alt="その他" style="float: left;">
-                                  <h3 class="mt-20" style="float: flex;">その他</h3>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="150" height="100" src="/assets/wisky.jpg" alt="その他">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <p class="mt-20">その他</p>
+                                  </div>
+                                </div>
                                 <% else %>
-                                  <img width="100" height="100" src="/assets/noimage.png" alt="その他" style="float: left;">
-                                  <h5 class="mt-20" style="float: flex">情報無し</h5>
+                                <div class="row">
+                                  <div class="col-lg-7">
+                                    <img width="120" height="100" src="/assets/noimage.png" alt="その他">
+                                  </div>
+                                  <div class="col-lg-5">
+                                    <p class="mt-20">情報無し</p>
+                                  </div>
+                                </div>
                                 
                                 <% end %>
                                 
@@ -275,7 +371,7 @@
                   </div>  
                   
                       <div id="situation" class="row">
-                        <div class="offset-sm-1 col-sm-10">
+                        <div class="offset-lg-1 col-lg-10">
                             <div class="card">
                               <div class="card-header">
                                   <h3 class="card-title">
@@ -285,30 +381,68 @@
                         
                               <div class="card-body">
                                   <div class="image-picture">
+                                    
                                     <% if article.situation == "社長・経営者クラス" %>
-                                      <img width="150" height="100" src="/assets/president.jpg" alt="社長・経営者クラス" style="float: left;">
-                                      <h3 class="mt-20" style="float: flex;">社長・経営者クラス</h3>
+                                    <div class="row">
+                                      <div class="col-lg-5">
+                                        <img width="120" height="100" src="/assets/president.jpg" alt="社長・経営者クラス">
+                                      </div>
+                                      <div class="col-lg-7">
+                                        <h4 class="mt-40">社長・経営者クラス</h4>
+                                      </div>
+                                    </div>
                                     
                                     <% elsif article.situation == "役員クラス" %>
-                                      <img width="150" height="100" src="/assets/yakuinn.jpg" alt="役員クラス" style="float: left;">
-                                      <h3 class="mt-20" style="float: flex;">役員クラス</h3>
+                                    <div class="row">
+                                      <div class="col-lg-6">
+                                        <img width="120" height="100" src="/assets/yakuinn.jpg" alt="役員クラス">
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <h3 class="mt-20">役員クラス</h3>
+                                      </div>
+                                    </div>
+                                      
                                       
                                       
                                     <% elsif article.situation == "部長クラス" %>
-                                      <img width="150" height="100" src="/assets/teamleader.jpg" alt="部長クラス" style="float: left;">
-                                      <h3 class="mt-20" style="float: flex;">部長クラス</h3>
+                                    <div class="row">
+                                      <div class="col-lg-6">
+                                        <img width="120" height="100" src="/assets/teamleader.jpg" alt="部長クラス">
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <h3 class="mt-20">部長クラス</h3>
+                                      </div>
+                                    </div>
                                       
                                     <% elsif article.situation == "役職クラス" %>
-                                      <img width="150" height="100" src="/assets/groupleader.jpg" alt="役職クラス" style="float: left;">
-                                      <h3 class="mt-20" style="float: flex;">役職クラス</h3>
+                                    <div class="row">
+                                      <div class="col-lg-6">
+                                        <img width="120" height="100" src="/assets/groupleader.jpg" alt="役職クラス">
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <h3 class="mt-20">役職クラス</h3>
+                                      </div>
+                                    </div>
                                     
                                     <% elsif article.situation == "担当レベル" %>
-                                      <img width="150" height="100" src="/assets/crient.jpg" alt="担当レベル" style="float: left;">
-                                      <h3 class="mt-20" style="float: flex;">担当レベル</h3>
+                                    <div class="row">
+                                      <div class="col-lg-6">
+                                        <img width="120" height="100" src="/assets/crient.jpg" alt="担当レベル">
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <h3 class="mt-20">担当レベル</h3>
+                                      </div>
+                                    </div>
                                       
                                     <% else %>
-                                      <img width="150" height="100" src="/assets/noimage.png" alt="その他" style="float: left;">
-                                      <h5 class="mt-20" style="float: flex">情報無し</h5> 
+                                    <div class="row">
+                                      <div class="col-lg-6">
+                                        <img width="120" height="100" src="/assets/noimage.png" alt="その他">
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <h4 class="mt-20">情報無し</h4> 
+                                      </div>
+                                    </div>
                                     <% end %>
                                   </div>
                               </div>  
@@ -320,15 +454,15 @@
                 <!-- 補足情報表示部分 -->
                 
                 
-                <h3>◆補足情報◆</h3>
-                <div id="second-info">  
+                <h3 style="margin-top: 30px;">◆補足情報◆</h3>       
+                <div id="second-info" style="margin-top: 0px;">
                     <div class="rst-info row" style="margin-top: 20px;">
                       <div class="col-sm-4">
                         <p>ソフトドリンク：<%= article.softdrink %></p>
                       </div>
                       
                       <div class="col-sm-4">
-                        <p>ビール銘柄：</p>　　　　<!--　後ほど追加する -->
+                        <p>ビール銘柄：<%= article.beer_brand %></p>　　　　<!--　後ほど追加する -->
                       </div>
                       
                       <div class="col-sm-4">
