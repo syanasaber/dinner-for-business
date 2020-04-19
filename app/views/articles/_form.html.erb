@@ -1,8 +1,10 @@
 
 
     <%= form_with(model: article, local: true) do |f| %>
+   
        <%= render 'layouts/error_messages', model: f.object %>
-        
+     
+    
         <form>
         
         
@@ -79,7 +81,7 @@
                 
                 
                     <%= f.text_field :area, class: 'col-sm-8' %>
-                    <p style="margin-left: 200px;">（※例：梅田、三宮、名古屋、京都等ざっくりとした、エリア地域を記入。アルファベット不可。）</p>
+                    <p style="margin-left: 180px;">（※例：梅田、三宮、名古屋、京都等ざっくりとした、エリア地域を記入。アルファベット不可。）</p>
                 
             </div>
             
@@ -90,9 +92,9 @@
                 
                     <%= f.label :最寄駅, '最寄駅(必須）', class: 'col-sm-2' %>
             　　　　  
-                    <%= f.text_field :station, class: 'col-sm-3' %> 
+                    <%= f.text_field :station, class: 'col-sm-8' %> 
                     
-                    <p style="margin-left: 240px;">※きっちり入力頂く必要ございません！（※例：三宮or三ノ宮でも可。アルファベットは不可。）</p> 
+                    <p style="margin-left: 180px;">※きっちり入力頂く必要ございません！（※例：三宮or三ノ宮でも可。アルファベットは不可。）</p> 
             </div>
                            
                 
@@ -215,27 +217,7 @@
                   
             </div>
             
-            <div class="form-group row">
-                    <!-- 直接数値を入力 -->
-                    <%= f.label :食べログ、ぐるなび等評価, '食べログ、ぐるなび等評価', class: 'col-sm-2' %>
-                
-                
-                
-                    <%= f.text_field :食べログ、ぐるなび等評価, class: 'col-sm-4' %>
-                  
-            </div>
             
-            <div class="form-group row">
-                
-                    <!-- 別テーブル、データベースを設けるよう検討中-->
-                
-                    <%= f.label :コメント等, 'コメント等', class: 'col-sm-2' %>
-                
-                
-                
-                    <%= f.text_field :コメント等, class: 'col-sm-10' %>
-                  
-            </div>
             
             
             <%= f.submit '記事を投稿する', class: 'btn btn-primary btn-block' %>

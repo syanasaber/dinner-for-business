@@ -1,0 +1,10 @@
+
+        <%= form_with(url: "/sort", local:true) do |f| %>
+          <form>
+            <p>並び替え</p>
+              
+              <%= hidden_field_tag :sort, search %>
+              <%= f.select :change, [['安い順', '安い順'], ['高い順', '高い順']] %>
+              <%= f.submit '並び替え' %>
+          </form>
+        <% end %>

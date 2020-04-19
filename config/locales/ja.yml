@@ -1,0 +1,35 @@
+
+ja:
+  activerecord:
+    attributes:
+      article:
+        shop_name: 店名
+        area: エリア
+        station: 駅名
+        
+      user: 
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        
+        
+
+#反映されないのは、インデント記載に問題があった！
+#上記のように、段的にインデントしていく
+#attributesとactiverecordは並べる
+#カラムが一番飛び出る形に！！
+
+
+#↓のように、ハッシュ構造を構築している。
+
+#{
+  #ja: {
+    #activerecord: {
+      #attributes: {
+        #article: {
+          #shop_name: "店名"
+        #}
+      #}
+    #}
+  #}
+#}  

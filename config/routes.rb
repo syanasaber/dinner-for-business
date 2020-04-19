@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get 'search_by_station_of_followings', to: 'users#search_by_station_of_followings'
     get 'search_by_station_of_likes', to: 'users#search_by_station_of_likes'
     
+    post 'sort', to: 'users#sort'
+    
     
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'

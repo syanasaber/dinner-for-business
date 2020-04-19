@@ -54,7 +54,7 @@
                     <%= form_with url: followings_user_path(@user), method: :get, local: true do |f| %>
                       <div class="form-group row">
                         <div class="col-lg-8">
-                           <p>■エリア、駅名、店名</p>
+                           <p>■エリア、駅名、店名で検索</p>
                         </div>
                       </div>   
                       <div class="form-group row">   
@@ -64,8 +64,8 @@
                           <%= f.submit :検索 %>
                     <% end %>
                     
-                    <div class="search_by_station">
-                      <p>■駅名選択で検索</p>
+                    <div class="search_by_station" style="margin-top: 20px;">
+                        <p>■駅名選択で検索</p>
                         <%= render 'users/search_by_station' %>
                         
                         <form action="/search_by_station_of_followings" accept-charset="UTF-8" method="get">
@@ -82,13 +82,9 @@
                 </h4>
             </div>
             <div class="card-body border-dark">
-                <div>
-                  <p>検索結果</p>
-                </div>
-    
-    
-                    <div class="search-result">
+             <div class="search-result">
                         <ul class="list-unstyled">
+                          <p id="text-result">検索結果</p>
                           <% @search_articles.each do |art| %>
                             <li class="media mb-3">
                               <div class="media-body">
@@ -201,17 +197,17 @@
     <div id="user-nav" class="col-lg-8">
         <ul class="nav nav-tabs nav-justified mb-3">
             <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">
-                TOP<span class="badge badge-secondary"><%= @count_articles %></span></a></li>
+                TOP</a></li>
             
             <li class="nav-item"><a href="<%= myarea_list_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(myarea_list_user_path(@user)) %>">マイエリア<span class="badge badge-secondary"></span></a></li>
             
              <li class="nav-item"><a href="<%= writing_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(writing_user_path(@user)) %>">投稿一覧<span class="badge badge-secondary"></span></a></li>
             
             <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">
-                フォロー<span class="badge badge-secondary"><%= @count_followings %></span></a></li>
+                フォロー</a></li>
             
             <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">
-                フォロワー<span class="badge badge-secondary"><%= @count_followers %></span></a></li>
+                フォロワー</a></li>
             
             <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入り記事<span class="badge badge-secondary"></span></a></li>
         </ul>

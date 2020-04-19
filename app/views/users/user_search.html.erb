@@ -5,10 +5,10 @@
     <p>ユーザー名で検索</p>
     <%= f.text_field :search %>
 
-    <%= f.submit :search %>
+    <%= f.submit :検索 %>
 <% end %>
 
 
 
-<h2>検索結果</h2>
+<h4 style="margin-top: 40px;">検索結果</h4>
 <%= render 'users', users: @search_users %>

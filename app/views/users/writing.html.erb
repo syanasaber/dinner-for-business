@@ -53,7 +53,7 @@
                     <%= form_with url: writing_user_path(@user), method: :get, local: true do |f| %>
                       <div class="form-group row">
                         <div class="col-lg-8">
-                           <p>■エリア、駅名、店名</p>
+                           <p>■エリア、駅名、店名で検索</p>
                         </div>
                       </div>   
                       <div class="form-group row">   
@@ -64,8 +64,8 @@
                     <% end %>
                     
                     
-                    <div class="search_by_station">
-                      <p>■駅名選択で検索</p>
+                    <div class="search_by_station" style="margin-top: 20px;">
+                        <p>■駅名選択で検索</p>
                         <%= render 'users/search_by_station' %>
                         
                         <form action="/search_by_station_of_writing" accept-charset="UTF-8" method="get">
@@ -82,13 +82,9 @@
                 </h4>
             </div>
             <div class="card-body border-dark">
-                <div>
-                  <p>検索結果</p>
-                </div>
-    
-    
-                    <div class="search-result">
+             <div class="search-result">
                         <ul class="list-unstyled">
+                          <p id="text-result">検索結果</p>
                           <% @search_articles.each do |art| %>
                             <li class="media mb-3">
                               <div class="media-body">

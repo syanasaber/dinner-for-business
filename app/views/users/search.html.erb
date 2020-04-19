@@ -9,7 +9,7 @@
     <% end %>
     
     
-            <div class="search_by_station">
+            <div class="search_by_station" style="margin-top: 20px;">
               <p>■駅名選択で検索</p>
                 <%= render 'users/search_by_station' %>
             
@@ -25,12 +25,15 @@
 
           
             
-          <div>
-            <p>検索結果</p>
+          <div style="margin-top: 20px;">
+            <h5>～検索結果～</h5>
           </div>
+          
+         <%= render 'users/sort_button', search: @search %>
     
           <div class="search-result">
             <ul class="list-unstyled">
+             
               <% @search_articles.each do |art| %>
                 <li class="media mb-3">
                   <div class="media-body">

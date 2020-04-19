@@ -1,7 +1,7 @@
 
 
 <header class="mb-4">
-  <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">  <!-- ナブバーカスタマイズする時はここで！ -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">  <!-- ナブバーカスタマイズする時はここで！ -->
     <p><a class="navbar-brand" href="/"><img src="/assets/mainlogo.png" alt="dinner planner"></a></p>  <!-- 後ほどロゴを挿入-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
@@ -36,9 +36,9 @@
           <li class="nav-item"><%= link_to 'お店の検索', search_users_path, class: 'nav-link' %></li>  　
           <li class="nav-item"><%= link_to '会員登録', signup_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ログイン', login_path, class: 'nav-link' %></li>
-
+        </ul>
         <% end %>
-      </ul>
+      
     </div>
   </nav>
 </header>

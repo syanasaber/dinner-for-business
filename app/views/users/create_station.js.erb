@@ -2,13 +2,16 @@
 <!-- js.erbファイルに書き込む場合は<script>いらない-->
 
 
-<% puts @value %>
-
-
   var array = <%= @value.to_s.html_safe %> ;
   
   
   function create_station_select () {
+  
+  var element = document.getElementById("search_by_station");
+  var len = element.length
+  for (i = len-1; i >= 0; i--) { 
+      element.remove(i);
+      }
   
   for (var i = 0; i < array.length; i++) { 
       var station = array[i];

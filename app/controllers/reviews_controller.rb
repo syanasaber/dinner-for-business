@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
     before_action :require_user_logged_in, only:[:new, :create, :destroy]
-    before_action :correct_user, only: [:edit, :update, :destroy]
+    before_action :correct_user, only: [:destroy]
     
     
     def show
@@ -23,6 +23,8 @@ class ReviewsController < ApplicationController
           redirect_back(fallback_location: user_path(current_user))
         end
     end
+    
+    
     
     def destroy
         @review.destroy

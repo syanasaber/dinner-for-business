@@ -7,6 +7,13 @@
   
   function create_line_select () {
   
+  var element = document.getElementById("lines");
+  var len = element.length
+  for (i = len-1; i >= 0; i--) { 
+      element.remove(i);
+      }
+  
+  
   for (var i = 0; i < array.length; i++) { 
       var line = array[i];
       var select = document.getElementById("lines");
