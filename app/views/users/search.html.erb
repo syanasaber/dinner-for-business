@@ -2,7 +2,7 @@
 
     <h1>お店の検索</h1>
     <%= form_with url: search_users_path, method: :get, local: true do |f| %>
-      <p>■エリア、駅名、店名で検索</p>
+      <p>■エリア、駅名、店名で検索（ざっくり幅広く検索されたい方はこちら）</p>
       <%= f.text_field :search %>
       
       <%= f.submit :search %>
@@ -10,7 +10,7 @@
     
     
             <div class="search_by_station" style="margin-top: 20px;">
-              <p>■駅名選択で検索</p>
+              <p>■駅名選択で検索（ピンポイントで絞り込みたい方はこちら）</p>
                 <%= render 'users/search_by_station' %>
             
               <form action="/search_by_station" accept-charset="UTF-8" method="get">
@@ -61,26 +61,26 @@
                               
                             <div class="card-body">
                               <div class="rst-topics row">
-                                <aside class="col-sm-4">
-                                  <div class="rst-imaage">
-                                      <div class="rst-main_visual">
-                                          <%= image_tag art.image1.url if art.image1? %>
-                                      </div>
+                                  <div class="col-sm-6">
+                                    <div class="rst-image">
+                                        <div class="rst-main_visual">
+                                            <%= image_tag art.image1.url if art.image1? %>
+                                        </div>
+                                    </div>
                                   </div>
-                                </aside>
-                              
-                              
-                      
-                                <div class="col-sm-6">
-                                   <p class="text-left">予算：<%= art.budget %>円</p>
-                              
-                                   <p class="text-left">雰囲気：<%= art.situation %></p>
-                       
-                                   <p class="text-left">こだわり(食)：<%= art.food_type %></p>
                                 
-                                   <p class="text-left">こだわり(お酒)：<%= art.alcohol_type %></p>
                                 
-                                </div>
+                        
+                                  <div id="sub-info" class="col-sm-6">
+                                     <p class="text-left">予算：<%= art.budget %>円</p>
+                                
+                                     <p class="text-left">雰囲気：<%= art.situation %></p>
+                         
+                                     <p class="text-left">こだわり(食)：<%= art.food_type %></p>
+                                  
+                                     <p class="text-left">こだわり(お酒)：<%= art.alcohol_type %></p>
+                                  
+                                  </div>
                               </div>  
                               
                             </div>

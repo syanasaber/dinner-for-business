@@ -112,28 +112,27 @@
                                           
                                         <div class="card-body">
                                           <div class="rst-topics row">
-                                            <aside class="col-lg-4">
-                                              <div class="rst-imaage">
-                                                  <div class="rst-main_visual">
-                                                      <%= image_tag art.image1.url if art.image1? %>
+                                              <div class="col-lg-5">
+                                                  <div class="rst-image">
+                                                      <div id="rst-main_visual">
+                                                          <%= image_tag art.image1.url if art.image1? %>
+                                                      </div>
                                                   </div>
                                               </div>
-                                            </aside>
-                                          
-                                          
-                                  
-                                            <div class="col-lg-6">
-                                               <p class="text-left">予算：<%= art.budget %>円</p>
-                                          
-                                               <p class="text-left">雰囲気：<%= art.situation %></p>
-                                   
-                                               <p class="text-left">こだわり(食)：<%= art.food_type %></p>
                                             
-                                               <p class="text-left">こだわり(お酒)：<%= art.alcohol_type %></p>
                                             
-                                            </div>
+                                    
+                                              <div id="sub-info" class="col-lg-7">
+                                                 <p class="text-left">予算：<%= art.budget %>円</p>
+                                            
+                                                 <p class="text-left">雰囲気：<%= art.situation %></p>
+                                     
+                                                 <p class="text-left">こだわり(食)：<%= art.food_type %></p>
+                                              
+                                                 <p class="text-left">こだわり(お酒)：<%= art.alcohol_type %></p>
+                                              
+                                              </div>
                                           </div>  
-                                          
                                         </div>
                                         
                                         <div class="card-footer">
