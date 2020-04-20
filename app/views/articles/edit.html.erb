@@ -1,20 +1,16 @@
 
 
     <%= form_with(model: @article, local: true) do |f| %>
-        <% if @article.errors.any? %>
-            <div id="error_explation class="alert alert-warning">
-                <ul class="mb-0">
-                    <% article.errors.full_messages.each do |art| %>
-                        <li><%= art %></li>
-                    <% end %>
-                </ul>
-            </div>
-        <% end %>
-        
+   
+       <%= render 'layouts/error_messages', model: f.object %>
+     
+    
         <form>
+        
+        
             <div class="form-group row">
                 
-                    <%= f.label :店名, '店名', class: 'col-sm-2' %>
+                    <%= f.label :店名, '店名（必須）', class: 'col-sm-2' %>
                 
                     <%= f.text_field :shop_name, class: 'col-sm-8' %>
                   
@@ -38,53 +34,54 @@
                   
             </div>
             
-            
+                <div id="picture-zone">
+                    <div class="form-group row">
+                        
+                            <%= f.label :写真1, '写真1', class: 'col-sm-2' %>
+                        
+                            <%= f.file_field :image1, class: 'col-sm-3' %>
+                       
+                    
+                            <%= f.label :写真2, '写真2', class: 'col-sm-2' %>
+                       
+                            <%= f.file_field :image2, class: 'col-sm-3' %>
+                    </div>
+                    
+                    
+                    <div class="form-group row">
+                        
+                            <%= f.label :写真3, '写真3', class: 'col-sm-2' %>
+                        
+                            <%= f.file_field :image3, class: 'col-sm-3' %>
+                       
+                        
+                            <%= f.label :写真4, '写真4', class: 'col-sm-2' %>
+                        
+                            <%= f.file_field :image4, class: 'col-sm-3' %>
+                    
+                    </div>   
+                    
+                    <div class="form-group row">
+                        
+                            <%= f.label :写真5, '写真5', class: 'col-sm-2' %>
+                       
+                            <%= f.file_field :image5, class: 'col-sm-3' %>
+                    
+                            <%= f.label :写真6, '写真6', class: 'col-sm-2' %>
+                        
+                            <%= f.file_field :image6, class: 'col-sm-3' %>
+                       
+                    </div>
+                </div>
+                
             <div class="form-group row">
                 
-                    <%= f.label :写真1, '写真1', class: 'col-sm-2' %>
-                
-                    <%= f.file_field :image1, class: 'col-sm-3' %>
-               
-            
-                    <%= f.label :写真2, '写真2', class: 'col-sm-2' %>
-               
-                    <%= f.file_field :image2, class: 'col-sm-3' %>
-            </div>
-            
-            
-            <div class="form-group row">
-                
-                    <%= f.label :写真3, '写真3', class: 'col-sm-2' %>
-                
-                    <%= f.file_field :image3, class: 'col-sm-3' %>
-               
-                
-                    <%= f.label :写真4, '写真4', class: 'col-sm-2' %>
-                
-                    <%= f.file_field :image4, class: 'col-sm-3' %>
-            
-            </div>   
-            
-            <div class="form-group row">
-                
-                    <%= f.label :写真5, '写真5', class: 'col-sm-2' %>
-               
-                    <%= f.file_field :image5, class: 'col-sm-3' %>
-            
-                    <%= f.label :写真6, '写真6', class: 'col-sm-2' %>
-                
-                    <%= f.file_field :image6, class: 'col-sm-3' %>
-               
-            </div>
-                
-            <div class="form-group row">
-                
-                    <%= f.label :エリア, 'エリア', class: 'col-sm-2' %>
+                    <%= f.label :エリア, 'エリア（必須）', class: 'col-sm-2' %>
                 
                 
                 
                     <%= f.text_field :area, class: 'col-sm-8' %>
-               
+                    <p style="margin-left: 180px;">（※例：梅田、三宮、名古屋、京都等ざっくりとした、エリア地域を記入。アルファベット不可。）</p>
                 
             </div>
             
@@ -93,21 +90,23 @@
         
             <div class="form-group row">
                 
-                    <%= f.label :最寄駅, '最寄駅', class: 'col-sm-2' %>
-                
-                
-                
-                    <%= f.text_field :station, class: 'col-sm-4' %>
-               
-                
-               
-                    <%= f.label :駅からの距離, '駅からの距離', class: 'offset-sm-1 col-sm-2' %>
-               
-                
-                
-                    <%= f.text_field :walk_time, class: 'col-sm-2' %>
-                
+                    <%= f.label :最寄駅, '最寄駅(必須）', class: 'col-sm-2' %>
+            　　　　  
+                    <%= f.text_field :station, class: 'col-sm-8' %> 
+                    
+                    <p style="margin-left: 180px;">※きっちり入力頂く必要ございません！（※例：三宮or三ノ宮でも可。アルファベットは不可。）</p> 
             </div>
+                           
+                
+            <div class="form-group row">    
+                    <%= f.label :駅からの距離, '駅からの距離', class: 'col-sm-2' %>
+               
+  
+                    <p>徒歩：<%= f.select :walk_time, [['3', '3'], ['5', '5'], ['10', '10'], ['15', '15'], ['20', '20']], class: 'col-sm-4' %>分</p>
+      
+            </div>
+            
+          
             
             <div class="form-group row">
                 
@@ -126,7 +125,7 @@
                 
                 
                     <%= f.select :alcohol_type, [['ビール', 'ビール'], ['カクテル', 'カクテル'], ['ワイン', 'ワイン'], ['日本酒', '日本酒'], ['焼酎', '焼酎'],
-                    ['ウイスキー', 'ウイスキー'], ['その他', 'その他']], class: 'col-sm-4' %>
+                    ['ウイスキー', 'ウイスキー'], ['その他','その他']], class: 'col-sm-4' %>
                   
             </div>
             
@@ -148,8 +147,8 @@
                 
                 
                 
-                    <%= f.select :budget, [["5,000", "5,000"], ["5,000~7,000", "5,000~7,000"], ['7,000~9,000', '7,000~9,000'], 
-                    ['9,000~12,000', '9,000~12,000'], ['12,000~15,0000', '12,000~15,000'], ['15,000~20,000', '15,000~20,000']], class: 'col-sm-4' %><p>円未満</p>
+                    <%= f.select :budget, [["5000", "5000"], ["7000", "7000"], ['9000', '9000'], 
+                    ['12000', '12000'], ['15000', '15000'], ['20000', '20000']], class: 'col-sm-4' %><p>円未満</p>
                   
             </div>
             
@@ -173,6 +172,19 @@
                     <%= f.select :softdrink, [['有', '有'], ['無', '無']], class: 'col-sm-4' %>
                   
             </div>
+            
+            
+            <div class="form-group row">
+                
+                    <%= f.label :ビール銘柄, 'ビール銘柄', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.select :beer_brand, [['アサヒ', 'アサヒ'], ['キリン一番搾り', 'キリン一番搾り'], ['エビス', 'エビス'], ['サッポロ', 'サッポロ'], ['その他', 'その他']], class: 'col-sm-4' %>
+                  
+            </div>
+            
+            
             
             <div class="form-group row">
                 
@@ -205,30 +217,10 @@
                   
             </div>
             
-            <div class="form-group row">
-                    <!-- 直接数値を入力 -->
-                    <%= f.label :食べログ、ぐるなび等評価, '食べログ、ぐるなび等評価', class: 'col-sm-2' %>
-                
-                
-                
-                    <%= f.text_field :食べログ、ぐるなび等評価, class: 'col-sm-4' %>
-                  
-            </div>
-            
-            <div class="form-group row">
-                
-                    <!-- 別テーブル、データベースを設けるよう検討中-->
-                
-                    <%= f.label :コメント等, 'コメント等', class: 'col-sm-2' %>
-                
-                
-                
-                    <%= f.text_field :コメント等, class: 'col-sm-10' %>
-                  
-            </div>
             
             
-            <%= f.submit '記事を編集する', class: 'btn btn-primary btn-block' %>
+            
+            <%= f.submit '記事を投稿する', class: 'btn btn-primary btn-block' %>
             
         </form>
         
@@ -236,3 +228,5 @@
             
            
     <% end %>
+    
+     

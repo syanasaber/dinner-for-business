@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   #事前処理でアクション実行者が、ログインユーザーかおづかを判断。
   
   before_action :require_user_logged_in, only: [:show, :followings, :followers, :likes, :writing, :myarea_list, 
-  :edit, :update, :destroy, :prev_search]
+  :edit, :update, :destroy, :user_search, :prev_search]
   before_action :set_user, only: [:show, :edit, :update, :followings, :followers, :likes, :writing, :myarea_list]
   before_action :set_search, only: [:show, :followings, :followers, :likes, :search, :writing, :myarea_list, :prev_search]
   before_action :correct_user, only: [:edit, :update, :destroy]
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:success] = 'ユーザーを登録しました。'
-      redirect_to @user
+      redirect_to login_url
     else
       flash.now[:danger] = 'ユーザーの登録に失敗しました。'
       render :new
