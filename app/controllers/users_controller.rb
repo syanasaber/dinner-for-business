@@ -52,16 +52,14 @@ class UsersController < ApplicationController
   
   def followings
     @followings = @user.followings.page(params[:page])
-    counts(@user)
   end
   
   def followers
     @followers = @user.followers.page(params[:page])
-    counts(@user)
   end
   
    def likes
-      @favorites = @user.favorites.page(params[:page]).per(8)
+    @favorites = @user.favorites.page(params[:page]).per(8)
    end
    
    def search
@@ -73,7 +71,13 @@ class UsersController < ApplicationController
   end
   
   def user_search
-    @search_users = User.search(params[:search]).order(id: :desc).page(params[:page]).per(15)
+    @search = params[:search]
+    if (@search != "")
+      @search_users = User.search(params[:search]).order(id: :desc).page(params[:page]).per(15)
+    else
+      @search_users = Article.none
+      @search_users = @search_users.page(params[:page])
+    end
   end
   
   def prev_search
@@ -133,6 +137,13 @@ class UsersController < ApplicationController
     
     @search_results = Kaminari.paginate_array(@myarea_articles).page(params[:page]).per(4)
     
+    if (@serch_articles != nil)
+      render 'myarea_list'
+    else
+      @nil = @search_articles.page(params[:page])
+      render 'myarea_list'
+    end
+    
   end
   
   
@@ -189,12 +200,22 @@ class UsersController < ApplicationController
   def search_by_station
     @search = params[:search_by_station]
     @search_articles = Article.search_station(params[:search_by_station]).order(id: :desc).page(params[:page]).per(4)
-    render 'search'
+    if (@serch_articles != nil)
+      render 'search'
+    else
+      @nil = @search_articles.page(params[:page])
+      render 'search'
+    end
   end
   
   def search_by_station_of_show
     @articles = @user.feed_articles.order(id: :desc).page(params[:page]).per(4)
-    render 'show'
+    if (@serch_articles != nil)
+      render 'show'
+    else
+      @nil = @search_articles.page(params[:page])
+      render 'show'
+    end
   end
   
   
@@ -225,30 +246,53 @@ class UsersController < ApplicationController
     
     @search_results = Kaminari.paginate_array(@myarea_articles).page(params[:page]).per(4)
     
-    render 'myarea_list'
+    if (@serch_articles != nil)
+      render 'myarea_list'
+    else
+      @nil = @search_articles.page(params[:page])
+      render 'myarea_list'
+    end
   end
   
   
   def search_by_station_of_writing
     @articles = @user.articles.order(id: :desc).page(params[:page]).per(4)
-    render 'writing'
+    if (@serch_articles != nil)
+      render 'writing'
+    else
+      @nil = @search_articles.page(params[:page])
+      render 'writing'
+    end
   end
   
   def search_by_station_of_followers
     @followers = @user.followers.page(params[:page]).per(15)
-    counts(@user)
-    render 'followers'
+    if (@serch_articles != nil)
+      render 'followers'
+    else
+      @nil = @search_articles.page(params[:page])
+      render 'followers'
+    end
   end
   
   def search_by_station_of_followings
     @followings = @user.followings.page(params[:page]).per(15)
-    counts(@user)
-    render 'followings'
+    if (@serch_articles != nil)
+      render 'followings'
+    else
+      @nil = @search_articles.page(params[:page])
+      render 'followings'
+    end
   end
   
   def search_by_station_of_likes
     @favorites = @user.favorites.page(params[:page]).per(4)
-    render 'likes'
+    if (@serch_articles != nil)
+      render 'likes'
+    else
+      @nil = @search_articles.page(params[:page])
+      render 'likes'
+    end
   end
   
   #--------------------------------------------------------------------------------------------------------------------------------
@@ -272,7 +316,12 @@ class UsersController < ApplicationController
   
   def set_search
     @search = params[:search]
-    @search_articles = Article.search(params[:search]).order(id: :desc).page(params[:page]).per(4)
+    if (@search != "")
+      @search_articles = Article.search(params[:search]).order(id: :desc).page(params[:page]).per(4)
+    else
+      @search_articles = Article.none
+      @search_articles = @search_articles.page(params[:page])
+    end
   end
   
   def correct_user

@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
           redirect_back(fallback_location: user_path(current_user))
         else
           flash.now[:danger] = '口コミが投稿できませんでした。'
-          redirect_back(fallback_location: user_path(current_user))
+          redirect_to reviewing_article_url(@article), flash: { error: @review.errors.full_messages } 
         end
     end
     
@@ -47,6 +47,9 @@ class ReviewsController < ApplicationController
     
 end
 
+
+
+#ほかのコントローラーへアクセスして、エラーメッセージ表示させる場合は、リダイレクトの段階でflashを明け渡す。
 
 #相互モデルをbelongs_toしているため、両方のカラムidがインスタンスにほりこめてないとエラーになる。
 #レビューコントローラーの削除後に、パラメーターidが65を取得してしまう原因

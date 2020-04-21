@@ -91,6 +91,16 @@
                     <div class="search-result">
                         <ul class="list-unstyled">
                           <p id="text-result">検索結果</p>
+                          
+                          <div class="search-none-alert">
+                                <% if @search_articles == []; %>
+                                <div class="erros">
+                                  <h5>検索結果無し。</h5>
+                                </div>
+                              <% end %>
+                            </div>
+                          
+                    
                           <% @search_articles.each do |art| %>
                             <li class="media mb-3">
                               <div class="media-body">

@@ -11,4 +11,14 @@
 
 
 <h4 style="margin-top: 40px;">検索結果</h4>
+
+<div class="search-none-alert" style="margin-top: 40px;">
+                                
+      <% if @search_users == []; %>
+        <div class="erros">
+          <h5>検索結果無し。</h5>
+        </div>
+      <% end %>
+</div>
+
 <%= render 'users', users: @search_users %>
