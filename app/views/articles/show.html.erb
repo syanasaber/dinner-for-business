@@ -1,22 +1,12 @@
 <div class="row">
-        <aside class="col-sm-4">    
-    
-           <h2 style="color:white">口コミの投稿</h2>
+        <aside class="col-sm-4">
+            <div style="margin-bottom: 20px;">
                 <% if logged_in? %>
-                    <%= form_with(model: @review, local: true) do |f| %>
-                        <%= render 'layouts/error_messages', model: @review %>
-                            
-                      <%= hidden_field_tag :article_id, @article.id %>
-                      <%= hidden_field_tag :user_id, current_user.id %>
-                      <p class="rev-form">タイトル：</p>
-                      <%= f.text_field :title, class: "text_field form-control", style: "margin-top: 0px" %>
-                      <p class="rev-form">コメント：</p>
-                      <%= f.text_area :content, class: "text-area form-control", style: "margin-top: 0px" %>
-                      <%= f.submit '投稿', class: "submit-btn", style: "margin-top: 10px" %>
-                    <% end %>
+                    <%= link_to "口コミを投稿する", new_review_path(:article_id => @article.id), class: "btn btn-primary btn-sm", style: "margin-top: 15px" %>
                 <% else %>
-                    <%= link_to "会員登録して口コミを投稿", signup_path, class: "btn btn-primary btn-sm", style: "margin-top: 15px;" %>
+                    <%= link_to "会員登録して口コミを投稿", signup_path, class: "btn btn-primary btn-sm", style: "margin-top: 15px" %>
                 <% end %>
+            </div>    
         </aside>
 
 
@@ -25,7 +15,7 @@
                     <li class="nav-item"><a href="<%= article_path %>" class="nav-link <%= 'active' if current_page?(article_path) %>">
                         概要</a></li>
                     
-                    <li class="nav-item"><a href="<%= reviewing_article_path %>" class="nav-link <%= 'active' if current_page?(reviewing_article_path) %>">口コミ<span class="badge badge-secondary"></span></a></li>
+                    <li class="nav-item"><a href="<%= reviewing_article_path(@article) %>" class="nav-link <%= 'active' if current_page?(reviewing_article_path(@article)) %>">口コミ<span class="badge badge-secondary"></span></a></li>
                 </ul>
             
                 <%= render 'articles/detail', article: @article %>    

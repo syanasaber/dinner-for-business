@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
     end
     
     def new
+        @article = Article.find(params[:article_id])
         @review = Review.new
     end
     
@@ -14,13 +15,14 @@ class ReviewsController < ApplicationController
         @article = Article.find(params[:article_id])
         @review = @article.reviews.build(review_params)
         @review.user = current_user
+        @reviews = @article.reviews
        
         if @review.save
           flash[:success] = '口コミを投稿しました。'
-          redirect_back(fallback_location: user_path(current_user))
+          redirect_to reviewing_article_url(@article)
         else
           flash.now[:danger] = '口コミが投稿できませんでした。'
-          redirect_to reviewing_article_url(@article), flash: { error: @review.errors.full_messages } 
+          render :new
         end
     end
     

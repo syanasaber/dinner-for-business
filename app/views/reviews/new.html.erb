@@ -1,0 +1,14 @@
+
+<h2 style="color:white">口コミの投稿</h2>
+
+        <%= form_with(model: @review, local: true) do |f| %>
+            <%= render 'layouts/error_messages', model: f.object %>        
+           
+        <%= hidden_field_tag :article_id, @article.id %>
+        <%= hidden_field_tag :user_id, current_user.id %>
+          <p style="margin-top: 3px;">タイトル：</p>
+          <%= f.text_field :title, class: "text_field form-control" %>
+          <p style="margin-top: 3px;">コメント：</p>
+          <%= f.text_area :content, class: "text-area form-control" %>
+          <%= f.submit '投稿', class: "submit-btn", style: "margin-top: 10px" %>
+        <% end %>

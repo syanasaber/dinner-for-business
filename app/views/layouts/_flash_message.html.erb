@@ -1,19 +1,6 @@
         
         
-    <% if flash[:error] %>   
-        <% if flash[:error].present? %>
-            <div id="error_explanation" class="bg-danger", style="margin-bottom: 20px;">
-                
-                  <% flash[:error].each do |e| %>
-                      <ul class="errors">
-                        <li><%= e %></li>
-                      </ul>
-                  <% end %>
-                
-            </div>
-        <% end %>
-    
-    <% else %>    
+  
         <% flash.each do |message_type, message| %>
         
             <div class="alert alert-<%= message_type %>">
@@ -22,6 +9,4 @@
               
             </div>
         <% end %>
-        
-    <% end %>
-
+   

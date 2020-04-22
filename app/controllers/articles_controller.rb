@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     flash[:success] = '記事を削除しました。'
-    redirect_back(fallback_location: user_path)
+    redirect_to writing_user_url(current_user)
   end
   
   def reviewing
