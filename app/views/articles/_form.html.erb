@@ -81,7 +81,7 @@
                 
                 
                     <%= f.text_field :area, class: 'col-sm-8' %>
-                    <p style="margin-left: 180px;">（※例：梅田、三宮、名古屋、京都等ざっくりとした、エリア地域を記入。アルファベット不可。）</p>
+                    <p style="margin-left: 180px;">※例：梅田、三宮、名古屋、京都等ざっくりとした、エリア地域を記入。（アルファベット不可。）</p>
                 
             </div>
             
@@ -90,9 +90,11 @@
         
             <div class="form-group row">
                 
-                    <%= f.label :最寄駅, '最寄駅(必須）', class: 'col-sm-2' %>
-            　　　　  
-                    <%= f.text_field :station, class: 'col-sm-8' %> 
+                    <%= f.label :最寄駅, '最寄駅（必須）', class: 'col-sm-2' %>
+                
+                
+                
+                    <%= f.text_field :station, class: 'col-sm-8' %>
                     
                     <p style="margin-left: 180px;">※きっちり入力頂く必要ございません！（※例：三宮or三ノ宮でも可。アルファベットは不可。）</p> 
             </div>
@@ -147,7 +149,7 @@
                 
                 
                 
-                    <%= f.select :budget, [["5000", "5000"], ["7000", "7000"], ['9000', '9000'], 
+                    <%= f.select :budget, [['5000', '5000'], ['7000', '7000'], ['9000', '9000'], 
                     ['12000', '12000'], ['15000', '15000'], ['20000', '20000']], class: 'col-sm-4' %><p>円未満</p>
                   
             </div>

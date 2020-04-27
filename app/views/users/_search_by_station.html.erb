@@ -3,7 +3,7 @@
                       <input type="hidden" name="authenticity_token">
                         <label for="都道府県">都道府県</label>
                     
-                          <select id="prefecture" name="prefecture">
+                          <select id="prefecture" name="prefecture" onchange="changeTemplate($(this).val())">
                             <option value="">都道府県を選択</option>
                             <optgroup label="北海道・東北">
                             	<option value="北海道">北海道</option>
@@ -81,3 +81,18 @@
                 </select>
                 <input type="submit" name="commit" value="駅名を検索" data-disable-with="駅名を検索">
               </form>
+              
+              
+              <script>
+                function changeTemplate(val){
+                  const str1 = $("#prefecture option:selected").text();
+              
+                  $.ajax({
+                    url: "/users/change",
+                    type: "POST",
+                    data: {
+                      prefecture: str1
+                    }
+                  })
+                }
+              </script>

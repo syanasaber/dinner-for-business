@@ -8,7 +8,7 @@
 
 
 <div class="row">
-    <aside class="col-lg-4">
+    <aside class="col-lg-5">
         
         <!-- プロフィール表示ゾーン -->
         <div class="card">
@@ -51,14 +51,20 @@
             <div class="card-header">
                 <h4 class="card-title">
                     <%= form_with url: writing_user_path(@user), method: :get, local: true do |f| %>
-                      <div class="form-group row">
-                        <div class="col-lg-8">
-                           <p>■エリア、駅名、店名で検索</p>
-                        </div>
-                      </div>   
-                      <div class="form-group row">   
-                          <%= f.text_field :search, class: 'col-lg-8' %>
-                      </div>
+                          <div class="form-group row">
+                             <div class="col-lg-8">
+                               <p>■店名、駅名、エリア</p>
+                             </div>
+                             <%= f.text_field :search, class: 'col-lg-8' %>
+                          </div>
+                          
+                          <div class="form-group row">
+                             <div class="col-lg-8">
+                               <p>■ジャンル</p>
+                             </div>
+                                <%= f.select :food_type, [['', ''], ['お肉', 'お肉'], ['魚系', '魚系'], ['和食', '和食'], ['イタリアン', 'イタリアン'], 
+                                                         ['フレンチ', 'フレンチ'], ['その他', 'その他']], class: 'col-lg-10' %>
+                          </div>
               
                           <%= f.submit :検索 %>
                     <% end %>
@@ -86,6 +92,7 @@
                         <ul class="list-unstyled">
                           <p id="text-result">検索結果</p>
                           
+                <% if @search || @food_type %>
                             <div class="search-none-alert">
                               
                               <% if @search_articles == []; %>
@@ -93,6 +100,18 @@
                                   <h5>検索結果無し。</h5>
                                 </div>
                               <% end %>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <%= form_with(url: writing_user_path(@user), method: :get, local:true) do |f| %>
+                                    <form>
+                                      <p style="margin-bottom: 0px;">並び替え</p>
+                                        <%= hidden_field_tag :id, @user.id %>
+                                        <%= hidden_field_tag :search, @search %>
+                                    <%= hidden_field_tag :food_type, @food_type %>
+                                        <%= f.select :aside_change, [['安い順(予算金額)', '安い順(予算金額)'], ['高い順(予算金額)', '高い順(予算金額)'], ['駅近順（徒歩時間)', '駅近順（徒歩時間)']] %>
+                                        <%= f.submit '並び替え' %>
+                                    </form>
+                                <% end %>
                             </div>
                           <% @search_articles.each do |art| %>
                             <li class="media mb-3">
@@ -192,6 +211,7 @@
                         <%= paginate @search_articles %>
                         </ul>
                     </div>
+                <% end %>  <!-- @searchと@food_typeのnil判定ここまで -->
             </div>
         </div>
         
@@ -203,7 +223,7 @@
     </aside>
     
     <!-- タブ表示するコード-->
-    <div id="user-nav" class="col-lg-8">
+    <div id="user-nav" class="col-lg-7">
         <ul class="nav nav-tabs nav-justified mb-3">
             <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">
                 TOP<span class="badge badge-secondary"><%= @count_articles %></span></a></li>

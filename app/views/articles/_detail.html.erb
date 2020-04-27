@@ -18,39 +18,39 @@
                 <div id="basic-info"  style="margin-top: 0px;">
                     <div class="rst-info row">
                       <div class="col-lg-4">
-                        <p>店名：<%= article.shop_name %></p>
+                        <p class="text-left">店名：<%= article.shop_name %></p>
                       </div>
                       
                       <div class="offset-lg-1 col-lg-3">
-                        <p>エリア：<%= article.area %></p>
+                        <p class="text-left">エリア：<%= article.area %></p>
                       </div>
                       
                       <div class="col-lg-3">
-                        <p>最寄駅：<%= article.station %></p>
+                        <p class="text-left">最寄駅：<%= article.station %></p>
                       </div>
                     </div>
                     
                     
                     <div class="rst-info row">
                       <div class="col-lg-4">
-                        <p>サイト：<%= article.shop_url %></p>
+                        <p class="text-left">サイト：<%= article.shop_url %></p>
                       </div>
                       
                       
                       <div class="offset-lg-4 col-lg-3">
-                        <p>アクセス：徒歩<%= article.walk_time %>分</p>
+                        <p class="text-left">アクセス：徒歩<%= article.walk_time %>分</p>
                       </div>
                     </div>
                     
                     <div class="rst-info row">
                       <div class="col-lg-4">
-                        <p>予算(１人あたり）：約<%= article.budget %>円</p>
+                        <p class="text-left">予算(１人あたり）：約<%= article.budget %>円</p>
                       </div>
                     </div>
                     
                     <div class="rst-info row">
                       <div class="col-lg-4">
-                        <p>住所：<%= article.address %></p>
+                        <p class="text-left">住所：<%= article.address %></p>
                       </div>
                     </div>
                 </div>  
@@ -458,26 +458,26 @@
                 <div id="second-info" style="margin-top: 0px;">
                     <div class="rst-info row" style="margin-top: 20px;">
                       <div class="col-sm-4">
-                        <p>ソフトドリンク：<%= article.softdrink %></p>
+                        <p class="text-left">ソフトドリンク：<%= article.softdrink %></p>
                       </div>
                       
                       <div class="col-sm-4">
-                        <p>ビール銘柄：<%= article.beer_brand %></p>　　　　<!--　後ほど追加する -->
+                        <p class="text-left">ビール銘柄：<%= article.beer_brand %></p>　　　　<!--　後ほど追加する -->
                       </div>
                       
                       <div class="col-sm-4">
-                        <p>タバコ：<%= article.smoking %></p>
+                        <p class="text-left">タバコ：<%= article.smoking %></p>
                       </div>
                     </div>
                     
                     
                     <div class="rst-info row">
                       <div class="col-sm-4">
-                        <p>個室：<%= article.room_type %></p>
+                        <p class="text-left">個室：<%= article.room_type %></p>
                       </div>
                       
                       <div class="offset-sm-4 col-sm-4">
-                        <p>ネット予約：<%= article.net_reservation %></p>
+                        <p class="text-left">ネット予約：<%= article.net_reservation %></p>
                       </div>
                     </div>
                 </div>
@@ -485,7 +485,7 @@
           
             <% if logged_in? %>
               <div id="button-group" class="row">  
-                <div class="col-sm-6">                
+                <div class="col-sm-4">                
                   <% if current_user.favoriting?(article) %>
                       <%= link_to "お気に入りを解除", like_path(article.id), method: :delete, class: 'btn btn-danger btn-sm' %>
                   <% else %>
@@ -494,12 +494,12 @@
                 </div>
             
             <% else %>
-                <div class="col-sm-6">
+                <div class="col-sm-4 offset-sm-4">
                  <%= link_to "会員登録してお気に入り登録", signup_path, class: 'btn btn-primary btn-sm' %>
                 </div>
             <% end %>    
             
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                   <% if current_user == article.user %>
                    <%= link_to "記事を編集する", edit_article_path(article), class: 'btn btn-primary btn-sm' %>
                   <% end %>
@@ -510,7 +510,7 @@
               
               
               <div id="delete-button" class="row">
-                <div class="offset-sm-4 col-sm-4 offset-sm-4">
+                <div class="offset-sm-3 col-sm-6 offset-sm-3">
                   <% if current_user == article.user %>
                     <%= link_to "削除", article, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
                   <% end %>
