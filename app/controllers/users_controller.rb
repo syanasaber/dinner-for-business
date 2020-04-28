@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  protect_from_forgery  #このコードを記入することで、invalidtakenエラー解除できた
   #事前処理でアクション実行者が、ログインユーザーかおづかを判断。
   
   before_action :require_user_logged_in, only: [:show, :followings, :followers, :likes, :writing, :myarea_list, 
@@ -215,7 +216,9 @@ class UsersController < ApplicationController
           @value = value2
         end
     end
-    render 'change.js.erb'
+    respond_to do |change|
+      change.js.erb
+    end
   end
   
   #路線から駅名検索
@@ -236,7 +239,9 @@ class UsersController < ApplicationController
           end
         end
     end
-    render 'create_station.js.erb'
+    respond_to do |create_station|
+      create_station.js.erb
+    end
   end
 
   

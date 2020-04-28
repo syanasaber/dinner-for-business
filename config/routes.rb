@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     get 'navigation', to: 'toppages#navigation'
     get 'selectpage', to: 'toppages#selectpage'
     post 'change', to: 'users#change'
+    
     post 'create_station', to: 'users#create_station'
     get 'search_by_station', to: 'users#search_by_station'
     get 'search_by_station_of_show', to: 'users#search_by_station_of_show'

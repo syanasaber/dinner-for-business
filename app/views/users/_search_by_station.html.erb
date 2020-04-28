@@ -1,9 +1,9 @@
-<form action="/change" accept-charset="UTF-8" data-remote="true" method="post">
-                    <input name="utf8" type="hidden" value="✓">
-                      <input type="hidden" name="authenticity_token">
+                  <form>
+                      <input name="utf8" type="hidden" value="✓">
+                        <input type="hidden" name="authenticity_token">
                         <label for="都道府県">都道府県</label>
                     
-                          <select id="prefecture" name="prefecture" onchange="changeTemplate($(this).val())">
+                          <select id="prefecture" name="prefecture" onchange="changeTemplate()">
                             <option value="">都道府県を選択</option>
                             <optgroup label="北海道・東北">
                             	<option value="北海道">北海道</option>
@@ -69,30 +69,53 @@
                             	<option value="沖縄県">沖縄県</option>
                             </optgroup>
                           </select>
-                    <input type="submit" name="commit" value="路線を検索" data-disable-with="路線を検索">
-              </form>
+                      </form>
             
-              <form action="/create_station" accept-charset="UTF-8" data-remote="true" method="post">
+              <form>
                 <input name="utf8" type="hidden" value="✓">
                 <input type="hidden" name="authenticity_token">
                 <label for="路線">路線</label>
-                <select id="lines" name="lines">
+                <select id="lines" name="lines" onchange="changeTemplate2()">
                 
                 </select>
-                <input type="submit" name="commit" value="駅名を検索" data-disable-with="駅名を検索">
+                
               </form>
               
               
               <script>
-                function changeTemplate(val){
+                function changeTemplate(){
+                  console.log("abc")
                   const str1 = $("#prefecture option:selected").text();
+                  
+                  console.log(str1)
               
                   $.ajax({
-                    url: "/users/change",
+                    url: "/change",
                     type: "POST",
                     data: {
                       prefecture: str1
                     }
                   })
-                }
+                };
+                
+              </script>  
+              
+              
+              <script>
+                
+               
+                function changeTemplate2(){
+                  const str2 = $("#lines option:selected").text();
+                  
+                  console.log(str2)
+              
+                  $.ajax({
+                    url: "/create_station",
+                    type: "POST",
+                    data: {
+                      lines: str2
+                    }
+                  })
+                };
+                
               </script>
